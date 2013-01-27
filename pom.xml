@@ -1,25 +1,63 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.infokadr</groupId>
-  <artifactId>infokadr</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <packaging>pom</packaging>
+    <groupId>com.infokadr</groupId>
+    <artifactId>infokadr</artifactId>
+    <version>1.0-SNAPSHOT</version>
 
-  <name>infokadr</name>
-  <url>http://maven.apache.org</url>
+    <packaging>pom</packaging>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+    <name>infokadr</name>
+    <url>http://maven.apache.org</url>
 
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <scm>
+        <connection>scm:git:git@github.com/minsler/infokadr.com.git</connection>
+        <url>scm:git:git@github.com/minsler/infokadr.com.git</url>
+        <developerConnection>scm:git:git@github.com/minsler/infokadr.com.git</developerConnection>
+    </scm>
+
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/minsler/infokadr.com/issues</url>
+    </issueManagement>
+
+    <developers>
+        <developer>
+            <name>Dzmitry Misiuk</name>
+            <url>http://www.minsler.com</url>
+            <roles>
+                <role>Original Author</role>
+            </roles>
+        </developer>
+        <developer>
+            <name>UNDEADgtr</name>
+            <roles>
+                <role>Original Author</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.11</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+    <modules>
+        <module>modules/infokadr-dao</module>
+        <module>modules/infokadr-service</module>
+        <module>modules/infokadr-web</module>
+    </modules>
+
 </project>
