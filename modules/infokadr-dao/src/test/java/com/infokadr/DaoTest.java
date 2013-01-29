@@ -1,6 +1,6 @@
 package com.infokadr;
 
-import junit.framework.TestCase;
+import org.junit.Assert;
 
 /**
  * Created with IntelliJ IDEA.
@@ -9,5 +9,5 @@ import junit.framework.TestCase;
  * Time: 22:43
  * To change this template use File | Settings | File Templates.
  */
-public class DaoTest extends TestCase {
+public class DaoTest extends Assert {
 }

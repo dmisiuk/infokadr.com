@@ -1,21 +1,39 @@
 package com.infokadr.domain;
 
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * User: dzmitry.misiuk
  * Date: 1/28/13
  * Time: 12:13 AM
  */
+@Entity
 public class Trailer implements Serializable {
 
     private static final long serialVersionUID = 7411815236928129709L;
 
+    @Id
+    @GeneratedValue
     private Long id;
+
+    @Column
     private String name;
+
+    @Column
     private String shortName;
+
+    @Column
     private String description;
+
+    @Column
     private String url;
+
+    @Column
+    private Date timestamp;
+
+    @ManyToOne
     private Film film;
 
     public Trailer() {

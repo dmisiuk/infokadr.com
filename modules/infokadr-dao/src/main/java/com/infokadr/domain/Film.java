@@ -1,5 +1,6 @@
 package com.infokadr.domain;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -9,14 +10,26 @@ import java.util.List;
  * Date: 1/28/13
  * Time: 12:10 AM
  */
+@Entity
 public class Film implements Serializable {
 
     private static final long serialVersionUID = -4702281079235073943L;
 
+    @Id
+    @GeneratedValue
     private Long id;
+
+    @Column
     private String rusName;
+
+    @Column
     private String engName;
+
+    @Column
     private Date timestamp;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "film", cascade = CascadeType.ALL)
+    @OrderBy(value = "timestamp")
     private List<Trailer> trailers;
 
     public Film() {
