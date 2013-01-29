@@ -33,7 +33,7 @@ public class Trailer implements Serializable {
     @Column
     private Date timestamp;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Film film;
 
     public Trailer() {

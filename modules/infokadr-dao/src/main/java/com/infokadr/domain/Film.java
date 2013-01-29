@@ -29,7 +29,6 @@ public class Film implements Serializable {
     private Date timestamp;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "film", cascade = CascadeType.ALL)
-    @OrderBy(value = "timestamp")
     private List<Trailer> trailers;
 
     public Film() {
