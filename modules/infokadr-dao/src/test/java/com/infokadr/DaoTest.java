@@ -84,4 +84,55 @@ public class DaoTest extends Assert {
         filmDao.delete(film1);
         filmDao.delete(film2);
     }
+
+    @Test
+    public void create_trailer() {
+        Trailer trailer = new Trailer();
+        Long id = trailerDao.create(trailer);
+        assertNotNull(id);
+        Trailer readTrailer = trailerDao.read(id);
+        assertEquals(trailer, readTrailer);
+        trailerDao.delete(readTrailer);
+    }
+
+    @Test
+    public void test_trailer_create_delete() {
+        Trailer trailer = new Trailer();
+        Long id = trailerDao.create(trailer);
+        assertNotNull(id);
+        Trailer readTrailer = trailerDao.read(id);
+        assertNotNull(readTrailer);
+        trailerDao.delete(readTrailer);
+        Trailer deletedTrailer = trailerDao.read(id);
+        assertNull(deletedTrailer);
+    }
+
+    @Test
+    public void test_trailer_create_update() {
+        Trailer trailer = new Trailer();
+        Long id = trailerDao.create(trailer);
+        assertNotNull(id);
+        Trailer readTrailer = trailerDao.read(id);
+        assertNotNull(readTrailer);
+        readTrailer.setName("имя трейлера");
+        trailerDao.update(readTrailer);
+        Trailer updatedTrailer = trailerDao.read(id);
+        assertEquals(readTrailer, updatedTrailer);
+        assertEquals("имя трейлера", updatedTrailer.getName());
+        trailerDao.delete(updatedTrailer);
+    }
+
+    @Test
+    public void test_trailer_create_get_all() {
+        Trailer trailer1 = new Trailer();
+        Trailer trailer2 = new Trailer();
+        trailerDao.create(trailer1);
+        trailerDao.create(trailer2);
+        List<Trailer> list = trailerDao.readAll();
+        assertNotNull(list);
+        assertEquals(2, list.size());
+        trailerDao.delete(trailer1);
+        trailerDao.delete(trailer2);
+    }
+
 }
