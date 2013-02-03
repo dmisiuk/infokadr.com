@@ -6,11 +6,9 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
  * User: Dzmitry
  * Date: 29.01.13
  * Time: 20:43
- * To change this template use File | Settings | File Templates.
  */
 public interface Dao<T, PK extends Serializable> {
 

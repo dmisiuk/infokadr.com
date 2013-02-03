@@ -9,11 +9,9 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
  * User: Dzmitry
  * Date: 29.01.13
  * Time: 21:04
- * To change this template use File | Settings | File Templates.
  */
 public class DaoImpl<T, PK extends Serializable> implements Dao<T, PK> {
 

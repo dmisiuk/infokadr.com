@@ -135,4 +135,41 @@ public class DaoTest extends Assert {
         trailerDao.delete(trailer2);
     }
 
+    @Test
+    public void test_film_trailer_cascade_create_get() {
+        Film film = new Film();
+        Trailer trailer1 = new Trailer();
+        Trailer trailer2 = new Trailer();
+        Long id = filmDao.create(film);
+        trailer1.setFilm(film);
+        trailer2.setFilm(film);
+        trailerDao.create(trailer1);
+        trailerDao.create(trailer2);
+        Film readFilm = filmDao.read(id);
+        assertNotNull(readFilm);
+        assertEquals(2, readFilm.getTrailers().size());
+        trailerDao.delete(trailer1);
+        trailerDao.delete(trailer2);
+        filmDao.delete(film);
+    }
+
+    @Test
+    public void test_film_trailer_cascade_delete() {
+        Film film = new Film();
+        Trailer trailer1 = new Trailer();
+        Trailer trailer2 = new Trailer();
+        Long id = filmDao.create(film);
+        trailer1.setFilm(film);
+        trailer2.setFilm(film);
+        trailerDao.create(trailer1);
+        trailerDao.create(trailer2);
+        Film readFilm = filmDao.read(id);
+        assertNotNull(readFilm);
+        assertEquals(2, readFilm.getTrailers().size());
+        filmDao.delete(readFilm);
+        List<Trailer> list = trailerDao.readAll();
+        assertNotNull(list);
+        assertEquals(0, list.size());
+    }
+
 }
