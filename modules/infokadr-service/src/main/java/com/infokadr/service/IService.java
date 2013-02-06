@@ -1,7 +1,6 @@
 package com.infokadr.service;
 
 
-
 import com.infokadr.domain.Film;
 import com.infokadr.domain.Trailer;
 
@@ -14,11 +13,13 @@ import java.util.List;
  */
 public interface IService {
 
-    /*****************************************
-     *
+    /**
+     * **************************************
+     * <p/>
      * Film's CRUD
-     *
-     *****************************************/
+     * <p/>
+     * ***************************************
+     */
 
     Film createFilm(Film film);
 
@@ -32,11 +33,13 @@ public interface IService {
 
     void deleteFilm(Film film);
 
-    /*****************************************
-     *
+    /**
+     * **************************************
+     * <p/>
      * Trailer's CRUD
-     *
-     *****************************************/
+     * <p/>
+     * ***************************************
+     */
 
     Trailer createTrailer(Trailer trailer, Long filmID);
 
@@ -51,4 +54,10 @@ public interface IService {
     void deleteTrailer(Long id);
 
     void deleteTrailer(Trailer trailer);
+
+    /*
+     service operations
+     */
+
+    public Trailer getLastTrailer();
 }

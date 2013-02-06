@@ -87,6 +87,14 @@ public class Trailer implements Serializable {
         this.film = film;
     }
 
+    public Date getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -100,6 +108,7 @@ public class Trailer implements Serializable {
         if (name != null ? !name.equals(trailer.name) : trailer.name != null) return false;
         if (shortName != null ? !shortName.equals(trailer.shortName) : trailer.shortName != null) return false;
         if (url != null ? !url.equals(trailer.url) : trailer.url != null) return false;
+        if (timestamp != null ? !timestamp.equals(trailer.timestamp) : trailer.timestamp != null) return false;
 
         return true;
     }
@@ -111,6 +120,7 @@ public class Trailer implements Serializable {
         result = 31 * result + (shortName != null ? shortName.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (url != null ? url.hashCode() : 0);
+        result = 31 * result + (timestamp != null ? timestamp.hashCode() : 0);
         result = 31 * result + (film != null ? film.hashCode() : 0);
         return result;
     }

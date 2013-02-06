@@ -1,0 +1,45 @@
+<style>
+        *{
+    color: #333333;
+}
+.page-header {
+    overflow: hidden;
+}
+.page-header div {
+    float: right;
+}
+.nav-header {
+    text-transform: none;
+    font-size: 14px;
+    font-weight: normal;
+    color: #777777;
+}
+.btn-primary {
+    color: #ffffff;
+    text-shadow: none;
+    background-color: #08C;
+    *background-color: #08C;
+    background-image: none;
+    background-image: none;
+    background-image: none;
+    background-image: none;
+    background-image: none;
+    background-repeat: repeat-x;
+    border-color: #08C #08C #08C;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    filter: none;
+    filter: none;
+}
+.btn-group.open .btn-primary.dropdown-toggle {
+    background-color: #08C;
+}
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary.active,
+.btn-primary.disabled,
+.btn-primary[disabled] {
+    color: #ffffff;
+    background-color: #08C;
+    *background-color: #08C;
+}
+</style>
