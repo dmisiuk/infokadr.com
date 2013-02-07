@@ -2,7 +2,17 @@
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
         "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-    <definition name="default" template="/WEB-INF/template/layout.jsp">
+    <definition name="default" template="/WEB-INF/templates/layout.jsp">
         <put-attribute name="body" value="/WEB-INF/views/lastTrailer.jsp"/>
     </definition>
+
+    <definition name="admin" template="/WEB-INF/templates/adminLayout.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/adminHeader.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/allFilms.jsp"/>
+    </definition>
+
+    <definition name="film" extends="admin">
+        <put-attribute name="content" value="/WEB-INF/views/film.jsp"/>
+    </definition>
+
 </tiles-definitions>

@@ -23,7 +23,7 @@ public interface IService {
 
     Film createFilm(Film film);
 
-    List<Film> getFilm();
+    List<Film> getAllFilms();
 
     Film getFilm(Long id);
 
