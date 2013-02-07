@@ -10,17 +10,21 @@
 
     <!--<mvc:annotation-driven/>-->
     <mvc:annotation-driven/>
-    <context:component-scan base-package="com.infokadr"/>
+    <context:component-scan base-package="com.infokadr.controller"/>
     <mvc:resources mapping="/resources/**" location="/resources/"/>
     <mvc:resources mapping="/favicon.ico" location="/favicon.ico"/>
 
-    <bean id="viewResolver"
-          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix">
-            <value>/WEB-INF/pages/</value>
-        </property>
-        <property name="suffix">
-            <value>.jsp</value>
+    <!-- tiles resolver -->
+    <bean id="tilesViewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver"/>
+    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+        <property name="definitions">
+            <list>
+                <value>/WEB-INF/tiles.xml</value>
+            </list>
         </property>
     </bean>
+
+    <bean id="service" class="com.infokadr.service.ServiceMock"/>
+
+
 </beans>
