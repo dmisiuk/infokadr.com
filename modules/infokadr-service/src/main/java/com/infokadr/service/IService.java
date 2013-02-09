@@ -60,4 +60,6 @@ public interface IService {
      */
 
     public Trailer getLastTrailer();
+
+    Trailer getTrailer(Long filmId, Long trailerId);
 }

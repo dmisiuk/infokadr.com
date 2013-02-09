@@ -8,23 +8,23 @@
 <tiles:insertTemplate template="/WEB-INF/views/breadcrumb.jsp">
     <tiles:putAttribute name="lisBreadcrumb">
         <li><a href="/admin">Все фильмы</a> <span class="divider">/</span></li>
-        <li class="active">Новый фильм</li>
+        <li><a href="/admin/film/${film.id}">${film.rusName}</a> <span class="divider">/</span></li>
+        <li class="active">Добавить новый трейлер</li>
     </tiles:putAttribute>
 </tiles:insertTemplate>
 
 <div class="row">
     <div class="span12">
-        <h2>Добавление нового фильма</h2>
+        <h2>Добавление нового трейлера</h2>
     </div>
 
-    <div class="span4">
+    <div class="span6">
         <form>
             <fieldset>
-                <%@include file="/WEB-INF/views/filmFieldset.jsp" %>
-                <button type="submit" class="btn"><i class="icon-ok"></i> Добавить новый фильм в базу</button>
+                <%@include file="/WEB-INF/views/trailerFieldset.jsp" %>
+                <button type="submit" class="btn"><i class="icon-ok"></i> Добавить новый трейлер в базу</button>
             </fieldset>
         </form>
     </div>
 
 </div>
-

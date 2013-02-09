@@ -2,22 +2,15 @@
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@ page isELIgnored="false" %>
 
-
-
-
-<div class="row">
-    <div class="span12">
-        <ul class="breadcrumb">
-            <li><a href="/admin">Все фильмы</a> <span class="divider">/</span></li>
-
-            <li class="active">${film.rusName}</li>
-            <a href="#" style="float: right"> <i class="icon-off"></i> выйти</a>
-        </ul>
-
-    </div>
-</div>
+<tiles:insertTemplate template="/WEB-INF/views/breadcrumb.jsp">
+    <tiles:putAttribute name="lisBreadcrumb">
+        <li><a href="/admin">Все фильмы</a> <span class="divider">/</span></li>
+        <li class="active">${film.rusName}</li>
+    </tiles:putAttribute>
+</tiles:insertTemplate>
 
 <div class="row">
     <div class="span12">
@@ -27,14 +20,7 @@
     <div class="span4">
         <form>
             <fieldset>
-                <legend>Общая информация</legend>
-
-                <label>Название фильма на руском:</label>
-                <textarea rows="3" style="width: 90%">${film.rusName}</textarea>
-
-                <label>Название фильма на английском:</label>
-                <textarea rows="3" style="width: 90%">${film.engName}</textarea>
-
+                <%@include file="/WEB-INF/views/filmFieldset.jsp" %>
                 <button type="submit" class="btn"><i class="icon-ok"></i> Сохранить изменения в фильме</button>
             </fieldset>
         </form>
@@ -54,12 +40,13 @@
                     </thead>
                     <tbody>
                     <c:forEach var="trailer" items="${film.trailers}">
+                        <c:set var="trailerUrl" value="/admin/film/${film.id}/video/${trailer.id}"/>
                         <tr>
                             <td>
-                                <a href="#">${trailer.name} </a>
+                                <a href="${trailerUrl}">${trailer.name} </a>
                             </td>
                             <td>
-                                <a href="#">${trailer.shortName} </a>
+                                <a href="${trailerUrl}">${trailer.shortName} </a>
                             </td>
                             <td>
                                 <a class="btn btn-mini" href="#"><i class="icon-remove"></i> удалить</a>
@@ -74,7 +61,7 @@
             </c:otherwise>
         </c:choose>
         <p>
-            <button class="btn" type="button"><i class="icon-plus"></i> Добавить новый трейлер</button>
+            <a class="btn" href="/admin/film/${film.id}/video/new"><i class="icon-plus"></i> Добавить новый трейлер</a>
         </p>
     </div>
 </div>

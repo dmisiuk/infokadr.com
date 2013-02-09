@@ -5,19 +5,11 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@ page isELIgnored="false" %>
 
-<tiles:putAttribute name="title">
-    Мой мега список аттрибутов
-</tiles:putAttribute>
-
-<div class="row">
-    <div class="span12">
-        <ul class="breadcrumb">
-            <li class="active">Все фильмы</li>
-            <a href="#" style="float: right"> <i class="icon-off"></i> выйти</a>
-        </ul>
-
-    </div>
-</div>
+<tiles:insertTemplate template="/WEB-INF/views/breadcrumb.jsp">
+    <tiles:putAttribute name="lisBreadcrumb" >
+        <li class="active">Все фильмы</li>
+    </tiles:putAttribute>
+</tiles:insertTemplate>
 
 <div class="row">
     <div class="span12">
@@ -44,7 +36,7 @@
                     </td>
                     <td>
                             ${fn:length(film.trailers)}
-                        <a class="btn btn-mini" href="#"><i class="icon-plus"></i> добавить</a>
+                        <a class="btn btn-mini" href="/admin/film/${film.id}/video/new"><i class="icon-plus"></i> добавить</a>
                     </td>
                 </tr>
             </c:forEach>

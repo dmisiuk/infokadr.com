@@ -47,10 +47,10 @@
                     <c:forEach var="tr" items="${trailer.film.trailers}">
                         <c:choose>
                             <c:when test="${tr.shortName == trailer.shortName}">
-                                <li class="disabled"><a href="#">${tr.shortName}</a></li>
+                                <li class="disabled"><a href="/video/${tr.id}">${tr.shortName}</a></li>
                             </c:when>
                             <c:otherwise>
-                                <li><a href="#">${tr.shortName}</a></li>
+                                <li><a href="/video/${tr.id}">${tr.shortName}</a></li>
                             </c:otherwise>
                         </c:choose>
                     </c:forEach>

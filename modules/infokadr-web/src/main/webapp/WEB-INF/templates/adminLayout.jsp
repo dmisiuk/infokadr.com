@@ -21,7 +21,7 @@
     <link href="/resources/css/responsive-video.css" rel="stylesheet">
     <script src="/resources/js/jquery.min.js" type="text/javascript"></script>
     <script src="/resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <link href="../../resources/css/infokadr.css" rel="stylesheet">
+    <link href="/resources/css/infokadr.css" rel="stylesheet">
 
 </head>
 <body style="background-color: #fffafa">

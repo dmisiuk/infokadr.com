@@ -1,6 +1,7 @@
 package com.infokadr.controller;
 
 import com.infokadr.domain.Film;
+import com.infokadr.domain.Trailer;
 import com.infokadr.service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,4 +42,22 @@ public class AdminController {
         model.put("title", "Добавить новый фильм");
         return "newFilm";
     }
+
+    @RequestMapping(value = "/admin/film/{filmId}/video/{trailerId}", method = RequestMethod.GET)
+    public String getTrailer(@PathVariable Long filmId, @PathVariable Long trailerId, ModelMap model) {
+        Trailer trailer = service.getTrailer(filmId, trailerId);
+        model.put("trailer", trailer);
+        model.put("title", trailer.getName());
+        return "trailer";
+    }
+
+
+    @RequestMapping(value = "/admin/film/{filmId}/video/new", method = RequestMethod.GET)
+    public String getTrailer(@PathVariable Long filmId, ModelMap model) {
+        Film film =  service.getFilm(filmId);
+        model.put("film", film);
+        model.put("title", "Добавить новый трейлер к фильму " + film.getRusName());
+        return "newTrailer";
+    }
+
 }

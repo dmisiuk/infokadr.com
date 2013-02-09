@@ -123,6 +123,13 @@ public class ServiceMock implements IService {
 
     @Override
     public Trailer getTrailer(Long id) {
+        if (id == 3) {
+            return trailer1;
+        }
+        if (id == 4) {
+            return trailer2;
+        }
+
         return null;
     }
 
@@ -144,5 +151,17 @@ public class ServiceMock implements IService {
     @Override
     public Trailer getLastTrailer() {
         return trailer1;
+    }
+
+    @Override
+    public Trailer getTrailer(Long filmId, Long trailerId) {
+        if (filmId == 1 && trailerId == 3) {
+            return trailer1;
+        }
+        if (filmId == 1 && trailerId == 4) {
+            return trailer2;
+        }
+
+        return null;
     }
 }
