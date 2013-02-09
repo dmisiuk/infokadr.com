@@ -5,6 +5,8 @@
 <%@ page isELIgnored="false" %>
 
 
+
+
 <div class="row">
     <div class="span12">
         <ul class="breadcrumb">
@@ -33,7 +35,7 @@
                 <label>Название фильма на английском:</label>
                 <textarea rows="3" style="width: 90%">${film.engName}</textarea>
 
-                <button type="submit" class="btn">Сохранить изменения в фильме</button>
+                <button type="submit" class="btn"><i class="icon-ok"></i> Сохранить изменения в фильме</button>
             </fieldset>
         </form>
     </div>

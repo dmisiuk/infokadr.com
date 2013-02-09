@@ -9,7 +9,9 @@
 <head>
     <meta charset="UTF-8">
 
-    <title>Admin</title>
+    <title>
+        Admin: <tiles:insertAttribute name="title" ignore="true" defaultValue="Главная"/>
+    </title>
     <meta name="description" content="Трейлеры и кадросюжеты фильмов (кадры из фильмов и сюжеты к ним)."/>
     <meta name="keywords"
           content="инфокадр, трейлеры, трейлеры фильмов, новые трейлеры, трейлеры онлайн, кадросюжеты, кадры из фильмов, сюжеты фильмов"/>

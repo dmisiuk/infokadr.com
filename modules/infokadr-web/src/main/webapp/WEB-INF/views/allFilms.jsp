@@ -2,8 +2,12 @@
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@ page isELIgnored="false" %>
 
+<tiles:putAttribute name="title">
+    Мой мега список аттрибутов
+</tiles:putAttribute>
 
 <div class="row">
     <div class="span12">
@@ -20,7 +24,7 @@
         <h2>Все фильмы</h2>
 
         <p>
-            <button class="btn" type="button"><i class="icon-plus"></i> Добавить фильм</button>
+            <a class="btn" type="button" href="/admin/film/new"><i class="icon-plus"></i> Добавить фильм</a>
         </p>
     </div>
 

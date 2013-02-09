@@ -7,12 +7,17 @@
     </definition>
 
     <definition name="admin" template="/WEB-INF/templates/adminLayout.jsp">
+        <put-attribute name="title" expression="Admin: ${title}"/>
         <put-attribute name="header" value="/WEB-INF/views/adminHeader.jsp"/>
         <put-attribute name="content" value="/WEB-INF/views/allFilms.jsp"/>
     </definition>
 
     <definition name="film" extends="admin">
         <put-attribute name="content" value="/WEB-INF/views/film.jsp"/>
+    </definition>
+
+    <definition name="newFilm" extends="admin">
+        <put-attribute name="content" value="/WEB-INF/views/newFilm.jsp"/>
     </definition>
 
 </tiles-definitions>
