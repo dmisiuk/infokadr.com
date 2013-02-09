@@ -49,17 +49,24 @@ public interface IService {
 
     Trailer getTrailer(Long id);
 
+    Trailer getTrailer(Long filmId, Long trailerId);
+
+    public Trailer getLastTrailer();
+
     void updateTrailer(Trailer trailer);
 
     void deleteTrailer(Long id);
 
     void deleteTrailer(Trailer trailer);
 
-    /*
-     service operations
+    /**
+     * **************************************
+     * <p/>
+     * Service operations
+     * <p/>
+     * ***************************************
      */
 
-    public Trailer getLastTrailer();
 
-    Trailer getTrailer(Long filmId, Long trailerId);
+
 }

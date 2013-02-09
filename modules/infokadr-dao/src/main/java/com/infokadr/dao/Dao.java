@@ -18,11 +18,14 @@ public interface Dao<T, PK extends Serializable> {
 
     List<T> readAll();
 
-    Criteria getCriteria();
-    List<T> find(Criteria c);
-
     T update(T t);
 
     void delete(T t);
+
+    Criteria getCriteria();
+
+    T find(Criteria c);
+
+    List<T> findAll(Criteria c);
 
 }

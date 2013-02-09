@@ -57,16 +57,6 @@ public class DaoImpl<T, PK extends Serializable> implements Dao<T, PK> {
     }
 
     @Override
-    public Criteria getCriteria() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public List<T> find(Criteria c) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
     public T update(T t) {
         log.debug(String.format("Update %s: %s.", typeName, t));
         getSession().update(t);
@@ -88,4 +78,26 @@ public class DaoImpl<T, PK extends Serializable> implements Dao<T, PK> {
         log.debug(String.format("Got current session for %s: %s.", typeName, session));
         return session;
     }
+
+    @Override
+    public Criteria getCriteria() {
+        return getSession().createCriteria(type);
+    }
+
+    @Override
+    public T find(Criteria c) {
+        log.debug(String.format("Find <%s> by criteria %s.", typeName, c));
+        T t = (T) c.list().get(0);
+        log.debug(String.format("Found entity: %s", t));
+        return null;
+    }
+
+    @Override
+    public List<T> findAll(Criteria c) {
+        log.debug(String.format("Find <%s> by criteria %s.", typeName, c));
+        List<T> list = c.list();
+        log.debug(String.format("Found %d entities", list == null ? 0 : list.size()));
+        return list;
+    }
+
 }
