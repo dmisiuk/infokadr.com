@@ -10,11 +10,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Dzmitry
+ * User: Dzmitry Khralovich
  * Date: 29.01.13
  * Time: 22:43
  */
@@ -170,6 +171,65 @@ public class DaoTest extends Assert {
         List<Trailer> list = trailerDao.readAll();
         assertNotNull(list);
         assertEquals(0, list.size());
+    }
+
+    @Test
+    public void test_query() {
+        Film film1 = new Film();
+        film1.setEngName("First");
+        Film film2 = new Film();
+        film2.setEngName("Second");
+        Film film3 = new Film();
+        film3.setEngName("Third");
+
+        Long id1 = filmDao.create(film1);
+        Long id2 = filmDao.create(film2);
+        Long id3 = filmDao.create(film3);
+
+        String query = "from Film where EngName='Second' order by ID";
+        List<Film> list = filmDao.readQuery(query);
+        assertNotNull(list);
+        assertEquals(1, list.size());
+        assertEquals(film2, list.get(0));
+
+        filmDao.delete(film1);
+        filmDao.delete(film2);
+        filmDao.delete(film3);
+    }
+
+
+    @Test
+    public void test_last() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.MONTH, Calendar.JANUARY);
+        calendar.set(Calendar.DAY_OF_MONTH, 15);
+        calendar.set(Calendar.YEAR, 2013);
+        calendar.set(Calendar.HOUR, 2);
+        calendar.set(Calendar.MINUTE, 15);
+        calendar.set(Calendar.SECOND, 30);
+
+        Film film1 = new Film();
+        film1.setTimestamp(calendar.getTime());
+        Film film2 = new Film();
+        calendar.set(Calendar.MINUTE, 17);
+        film2.setTimestamp(calendar.getTime());
+        Film film3 = new Film();
+        calendar.set(Calendar.MINUTE, 16);
+        film3.setTimestamp(calendar.getTime());
+
+        Long id1 = filmDao.create(film1);
+        Long id2 = filmDao.create(film2);
+        Long id3 = filmDao.create(film3);
+
+        Film entity = filmDao.readLast();
+
+        assertNotNull(entity);
+        assertEquals(film2, entity);
+
+        filmDao.delete(film1);
+        filmDao.delete(film2);
+        filmDao.delete(film3);
+
     }
 
 }

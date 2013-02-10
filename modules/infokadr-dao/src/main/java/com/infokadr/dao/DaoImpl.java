@@ -2,6 +2,7 @@ package com.infokadr.dao;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -9,7 +10,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * User: Dzmitry
+ * User: Dzmitry Khralovich
  * Date: 29.01.13
  * Time: 21:04
  */
@@ -54,6 +55,25 @@ public class DaoImpl<T, PK extends Serializable> implements Dao<T, PK> {
         List<T> list = getSession().createCriteria(type).list();
         log.debug(String.format("Got %d products", list == null ? 0 : list.size()));
         return list;
+    }
+
+    @Override
+    public List<T> readQuery(String query) {
+        log.debug(String.format("Get list by query %s.", query));
+        List<T> list = getSession().createQuery(query).list();
+        log.debug(String.format("Got %d entities", list == null ? 0 : list.size()));
+        return list;
+    }
+
+    @Override
+    public T readLast() {
+        String sort = "timestamp";       //Rigid logic, remember the name of a date variable
+        log.debug(String.format("Get last %s sort by %s. ", typeName, sort));
+        Query query = getSession().createQuery("from " + typeName +  " order by " + sort + " DESC");
+        query.setMaxResults(1);
+        T t = (T) query.uniqueResult();
+        log.debug(String.format("Got %s: %s.", typeName, t));
+        return t;
     }
 
     @Override

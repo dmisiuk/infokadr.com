@@ -18,6 +18,10 @@ public interface Dao<T, PK extends Serializable> {
 
     List<T> readAll();
 
+    List<T> readQuery(String query);
+
+    T readLast();
+
     T update(T t);
 
     void delete(T t);
