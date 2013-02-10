@@ -42,6 +42,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
             <groupId>javax.inject</groupId>
             <artifactId>javax.inject</artifactId>
         </dependency>
@@ -91,6 +97,13 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.code.maven-play-plugin.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <type>jar</type>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>

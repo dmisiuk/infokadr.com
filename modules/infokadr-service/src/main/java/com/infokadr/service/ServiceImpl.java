@@ -113,7 +113,9 @@ public class ServiceImpl implements IService {
     public Trailer createTrailer(Trailer trailer, Long filmID) {
         try {
             Film entity = filmDao.read(filmID);
-            entity.getTrailers().add(trailer);
+            //entity.getTrailers().add(trailer);
+            trailer.setFilm(entity);
+            trailerDao.create(trailer);
         } catch (HibernateException he) {
             log.error(String.format("Failed to add trailer to film: trailer=%s, filmID=%s.", trailer, filmID));
         }
@@ -123,7 +125,9 @@ public class ServiceImpl implements IService {
     @Override
     public Trailer createTrailer(Trailer trailer, Film film) {
         try {
-            film.getTrailers().add(trailer);
+            //film.getTrailers().add(trailer);
+            trailer.setFilm(film);
+            trailerDao.create(trailer);
         } catch (HibernateException he) {
             log.error(String.format("Failed to add trailer to film: trailer=%s, film=%s.", trailer, film));
         }
@@ -154,8 +158,13 @@ public class ServiceImpl implements IService {
 
     @Override
     public Trailer getLastTrailer() {
-        //Trailer entity = null;
-        return null;
+        Trailer entity = null;
+        try {
+            entity = trailerDao.readLast();
+        } catch (HibernateException he) {
+            log.error(String.format("Failed to get last trailer"));
+        }
+        return entity;
     }
 
     @Override

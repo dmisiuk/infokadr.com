@@ -2,6 +2,7 @@ package com.infokadr.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class Film implements Serializable {
     private Date timestamp;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "film", cascade = CascadeType.ALL)
-    private List<Trailer> trailers;
+    private List<Trailer> trailers = new ArrayList<Trailer>();
 
     public Film() {
     }

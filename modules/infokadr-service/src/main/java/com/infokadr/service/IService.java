@@ -51,7 +51,7 @@ public interface IService {
 
     Trailer getTrailer(Long filmId, Long trailerId);
 
-    public Trailer getLastTrailer();
+    Trailer getLastTrailer();
 
     void updateTrailer(Trailer trailer);
 
