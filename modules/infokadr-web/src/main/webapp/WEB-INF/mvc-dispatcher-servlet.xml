@@ -26,5 +26,8 @@
 
     <bean id="service" class="com.infokadr.service.ServiceMock"/>
 
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename" value="/WEB-INF/messages">
+        </property></bean>
 
 </beans>

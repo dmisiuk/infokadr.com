@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page isELIgnored="false" %>
 
 <tiles:insertTemplate template="/WEB-INF/views/breadcrumb.jsp">
@@ -18,12 +19,12 @@
     </div>
 
     <div class="span4">
-        <form>
+        <form:form commandName="film" method="POST" >
             <fieldset>
                 <%@include file="/WEB-INF/views/filmFieldset.jsp" %>
                 <button type="submit" class="btn"><i class="icon-ok"></i> Добавить новый фильм в базу</button>
             </fieldset>
-        </form>
+        </form:form>
     </div>
 
 </div>

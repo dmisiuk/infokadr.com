@@ -16,27 +16,31 @@ public class ServiceMock implements IService {
 
 
     private ArrayList<Film> filmList;
-    private Film film, film2;
+    private Film film1, film2;
     private Trailer trailer1;
     private Trailer trailer2;
 
+    private static int counter;
+
 
     public ServiceMock() {
-        film = new Film();
-        film.setId(new Long(1));
-        film.setRusName("Шерлок Холмс: Игра теней");
-        film.setEngName("Sherlock Holmes: A Game of Shadows");
-        film.setTimestamp(new Date());
+        counter = 1;
+
+        film1 = new Film();
+        film1.setId(new Long(next()));
+        film1.setRusName("Шерлок Холмс: Игра теней");
+        film1.setEngName("Sherlock Holmes: A Game of Shadows");
+        film1.setTimestamp(new Date());
 
         film2 = new Film();
-        film2.setId(new Long(2));
+        film2.setId(next());
         film2.setRusName("Батман");
         film2.setEngName("Batman");
         film2.setTimestamp(new Date());
 
 
         trailer1 = new Trailer();
-        trailer1.setId(new Long(3));
+        trailer1.setId(next());
         trailer1.setName("Шерлок Холмс 2: Игра теней. Русский трейлер FTR '2011'. HD");
         trailer1.setShortName("FTR 2011");
         trailer1.setTimestamp(new Date());
@@ -49,7 +53,7 @@ public class ServiceMock implements IService {
         trailer1.setUrl("http://www.youtube.com/embed/AwV9L9M4n3I");
 
         trailer2 = new Trailer();
-        trailer2.setId(new Long(4));
+        trailer2.setId(next());
         trailer2.setName("Обзор фильма - Шерлок Холмс: Игра теней");
         trailer2.setShortName("Обзор фильма");
         trailer2.setTimestamp(new Date());
@@ -57,22 +61,25 @@ public class ServiceMock implements IService {
                 "оправдает все ожидания! Подробности - в нашем обзоре.");
         trailer2.setUrl("http://www.youtube.com/embed/-O-_R5Y2DZA");
 
-        trailer1.setFilm(film);
-        trailer2.setFilm(film);
+        trailer1.setFilm(film1);
+        trailer2.setFilm(film1);
 
         List<Trailer> trailerList = new ArrayList<Trailer>();
         trailerList.add(trailer1);
         trailerList.add(trailer2);
-        film.setTrailers(trailerList);
+        film1.setTrailers(trailerList);
 
         filmList = new ArrayList<Film>();
-        filmList.add(film);
+        filmList.add(film1);
         filmList.add(film2);
     }
 
     @Override
     public Film createFilm(Film film) {
-        return null;
+        film.setId(next());
+        film.setTimestamp(new Date());
+        filmList.add(film);
+        return film;
     }
 
     @Override
@@ -82,11 +89,8 @@ public class ServiceMock implements IService {
 
     @Override
     public Film getFilm(Long id) {
-        if (id == 1) {
-            return film;
-        }
-        if (id == 2) {
-            return film2;
+        for(Film film: filmList){
+            if (film.getId().equals(id)) return film;
         }
         return null;
     }
@@ -163,5 +167,10 @@ public class ServiceMock implements IService {
         }
 
         return null;
+    }
+
+
+    private Long next() {
+        return new Long(counter++);
     }
 }

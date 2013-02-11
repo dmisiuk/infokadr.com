@@ -1,6 +1,9 @@
 package com.infokadr.domain;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,9 +24,13 @@ public class Film implements Serializable {
     private Long id;
 
     @Column
+    @NotBlank
+    @Size(min = 1)
     private String rusName;
 
     @Column
+    @NotBlank
+    @Size(min = 1)
     private String engName;
 
     @Column
