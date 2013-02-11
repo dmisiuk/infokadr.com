@@ -166,6 +166,31 @@ public class ServiceTest extends Assert {
     }
 
     @Test
+    public void test_get_FilmId_TrailerID_Trailer() {
+        Film film = new Film();
+        Trailer trailer = new Trailer();
+        Film filmCreate = service.createFilm(film);
+        assertNotNull(filmCreate);
+        Trailer trailerCreate = service.createTrailer(trailer, filmCreate);
+        assertNotNull(trailerCreate);
+        Film readFilm = service.getFilm(filmCreate.getId());
+        Trailer readTrailer = service.getTrailer(readFilm.getId(),trailerCreate.getId());
+        assertNotNull(readTrailer);
+        assertEquals(trailerCreate, readTrailer);
+        service.deleteTrailer(readTrailer);
+        Film readFilmAfter = service.getFilm(readFilm.getId());
+        assertNotNull(readFilmAfter);
+        service.deleteFilm(readFilmAfter);
+
+        Trailer trailer1 = new Trailer();
+        Trailer trailerCreate1 = service.createTrailer(trailer1, (Film) null);
+        assertNotNull(trailerCreate1);
+        Trailer readTrailer1 = service.getTrailer(1001l,trailerCreate1.getId());
+        assertNull(readTrailer1);
+        service.deleteTrailer(trailerCreate1);
+    }
+
+    @Test
     public void test_create_update_Trailer() {
         Film film = new Film();
         Trailer trailer = new Trailer();

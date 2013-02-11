@@ -169,15 +169,15 @@ public class ServiceImpl implements IService {
 
     @Override
     public Trailer getTrailer(Long filmId, Long trailerId) {
-//        Trailer entity = null;
-//        try {
-//            Film film = filmDao.read(filmId);
-//            film.getTrailers().
-//        } catch (HibernateException he) {
-//            log.error(String.format("Failed to add trailer to film: trailer=%s, filmID=%s.", trailer, filmID));
-//        }
-//        return entity;
-        return null;
+        Trailer entity = null;
+        try {
+            if(filmDao.read(filmId) != null){
+                entity = trailerDao.read(trailerId);
+            }
+        } catch (HibernateException he) {
+            log.error(String.format("Failed to get film or trailer"));
+        }
+        return entity;
     }
 
     @Override
