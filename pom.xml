@@ -213,6 +213,7 @@
     </build>
 
     <modules>
+        <module>modules/infokadr-domain</module>
         <module>modules/infokadr-dao</module>
         <module>modules/infokadr-service</module>
         <module>modules/infokadr-web</module>
