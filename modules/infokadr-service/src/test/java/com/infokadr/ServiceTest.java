@@ -36,6 +36,8 @@ public class ServiceTest extends Assert {
     @Test
     public void test_create_get_Film() {
         Film film = new Film();
+        film.setRusName("sdlfs");
+        film.setEngName("sdasd") ;
         Film filmCreate = service.createFilm(film);
         assertNotNull(filmCreate);
         Film readFilm = service.getFilm(filmCreate.getId());
@@ -46,7 +48,11 @@ public class ServiceTest extends Assert {
     @Test
     public void test_create_get_all_Films() {
         Film film1 = new Film();
+        film1.setRusName("sdlfs");
+        film1.setEngName("sdasd");
         Film film2 = new Film();
+        film2.setRusName("sdlfs");
+        film2.setEngName("sdasd");
         Film filmCreate1 = service.createFilm(film1);
         Film filmCreate2 = service.createFilm(film2);
         List<Film> list = service.getAllFilms();
@@ -60,6 +66,8 @@ public class ServiceTest extends Assert {
     @Test
     public void test_create_update_Film() {
         Film film = new Film();
+        film.setRusName("sdlfs");
+        film.setEngName("sdasd");
         Film filmCreate = service.createFilm(film);
         assertNotNull(filmCreate);
         Film readFilm = service.getFilm(filmCreate.getId());
@@ -75,6 +83,8 @@ public class ServiceTest extends Assert {
     @Test
     public void test_create_delete_Film() {
         Film film = new Film();
+        film.setRusName("sdlfs");
+        film.setEngName("sdasd");
         Film filmCreate = service.createFilm(film);
         assertNotNull(filmCreate);
         Film readFilm = service.getFilm(filmCreate.getId());
@@ -86,6 +96,8 @@ public class ServiceTest extends Assert {
     @Test
     public void test_create_delete_byID_Film() {
         Film film = new Film();
+        film.setRusName("sdlfs");
+        film.setEngName("sdasd");
         Film filmCreate = service.createFilm(film);
         assertNotNull(filmCreate);
         Film readFilm = service.getFilm(filmCreate.getId());
@@ -97,6 +109,8 @@ public class ServiceTest extends Assert {
     @Test
     public void test_create_byFilm_get_Trailer() {
         Film film = new Film();
+        film.setRusName("sdlfs");
+        film.setEngName("sdasd");
         Trailer trailer = new Trailer();
         Film filmCreate = service.createFilm(film);
         assertNotNull(filmCreate);
@@ -116,6 +130,8 @@ public class ServiceTest extends Assert {
     @Test
     public void test_create_byID_get_Trailer() {
         Film film = new Film();
+        film.setRusName("sdlfs");
+        film.setEngName("sdasd");
         Trailer trailer = new Trailer();
         Film filmCreate = service.createFilm(film);
         assertNotNull(filmCreate);
@@ -135,6 +151,8 @@ public class ServiceTest extends Assert {
     @Test
     public void test_getLast_Trailer() {
         Film film = new Film();
+        film.setRusName("sdlfs");
+        film.setEngName("sdasd");
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.MONTH, Calendar.JANUARY);
@@ -168,6 +186,8 @@ public class ServiceTest extends Assert {
     @Test
     public void test_get_FilmId_TrailerID_Trailer() {
         Film film = new Film();
+        film.setRusName("sdlfs");
+        film.setEngName("sdasd");
         Trailer trailer = new Trailer();
         Film filmCreate = service.createFilm(film);
         assertNotNull(filmCreate);
@@ -193,6 +213,8 @@ public class ServiceTest extends Assert {
     @Test
     public void test_create_update_Trailer() {
         Film film = new Film();
+        film.setRusName("sdlfs");
+        film.setEngName("sdasd");
         Trailer trailer = new Trailer();
         Film filmCreate = service.createFilm(film);
         assertNotNull(filmCreate);
@@ -212,6 +234,8 @@ public class ServiceTest extends Assert {
     @Test
     public void test_create_delete_Trailer() {
         Film film = new Film();
+        film.setRusName("sdlfs");
+        film.setEngName("sdasd");
         Trailer trailer = new Trailer();
         Film filmCreate = service.createFilm(film);
         assertNotNull(filmCreate);

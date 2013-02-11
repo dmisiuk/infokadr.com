@@ -39,6 +39,8 @@ public class DaoTest extends Assert {
     @Test
     public void create() {
         Film film = new Film();
+        film.setRusName("sdlfs");
+        film.setEngName("ads");
         Long id = filmDao.create(film);
         assertNotNull(id);
         Film readFilm = filmDao.read(id);
@@ -49,6 +51,8 @@ public class DaoTest extends Assert {
     @Test
     public void test_create_delete() {
         Film film = new Film();
+        film.setRusName("sdlfs");
+        film.setEngName("ads");
         Long id = filmDao.create(film);
         assertNotNull(id);
         Film readFilm = filmDao.read(id);
@@ -61,6 +65,8 @@ public class DaoTest extends Assert {
     @Test
     public void test_create_update() {
         Film film = new Film();
+        film.setRusName("sdlfs");
+        film.setEngName("ads");
         Long id = filmDao.create(film);
         assertNotNull(id);
         Film readFilm = filmDao.read(id);
@@ -76,7 +82,11 @@ public class DaoTest extends Assert {
     @Test
     public void test_create_get_all() {
         Film film1 = new Film();
+        film1.setRusName("sdlfs");
+        film1.setEngName("ads");
         Film film2 = new Film();
+        film2.setRusName("sdlfs");
+        film2.setEngName("ads");
         filmDao.create(film1);
         filmDao.create(film2);
         List<Film> list = filmDao.readAll();
@@ -139,6 +149,8 @@ public class DaoTest extends Assert {
     @Test
     public void test_film_trailer_cascade_create_get() {
         Film film = new Film();
+        film.setRusName("sdlfs");
+        film.setEngName("ads");
         Trailer trailer1 = new Trailer();
         Trailer trailer2 = new Trailer();
         Long id = filmDao.create(film);
@@ -157,6 +169,8 @@ public class DaoTest extends Assert {
     @Test
     public void test_film_trailer_cascade_delete() {
         Film film = new Film();
+        film.setRusName("sdlfs");
+        film.setEngName("ads");
         Trailer trailer1 = new Trailer();
         Trailer trailer2 = new Trailer();
         Long id = filmDao.create(film);
@@ -176,11 +190,15 @@ public class DaoTest extends Assert {
     @Test
     public void test_query() {
         Film film1 = new Film();
+        film1.setRusName("sdlfs");
+
         film1.setEngName("First");
         Film film2 = new Film();
         film2.setEngName("Second");
+        film2.setRusName("sdlfs");
         Film film3 = new Film();
         film3.setEngName("Third");
+        film3.setRusName("sdlfs");
 
         Long id1 = filmDao.create(film1);
         Long id2 = filmDao.create(film2);
@@ -209,11 +227,17 @@ public class DaoTest extends Assert {
         calendar.set(Calendar.SECOND, 30);
 
         Film film1 = new Film();
+        film1.setEngName("asd");
+        film1.setRusName("dlds");
         film1.setTimestamp(calendar.getTime());
         Film film2 = new Film();
+        film2.setEngName("asd");
+        film2.setRusName("dlds");
         calendar.set(Calendar.MINUTE, 17);
         film2.setTimestamp(calendar.getTime());
         Film film3 = new Film();
+        film3.setEngName("asd");
+        film3.setRusName("dlds");
         calendar.set(Calendar.MINUTE, 16);
         film3.setTimestamp(calendar.getTime());
 
