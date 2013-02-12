@@ -7,6 +7,7 @@
                     http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
     <http pattern="/resources/**" security="none"/>
+    <http pattern="/favicon.ico" security="none"/>
 
     <http use-expressions="true">
         <intercept-url pattern="/" access="permitAll"/>
@@ -14,6 +15,7 @@
         <intercept-url pattern="/admin/**" access="hasRole('admin')"/>
         <intercept-url pattern="/**" access="denyAll"/>
         <form-login/>
+        <logout/>
     </http>
 
     <authentication-manager>
