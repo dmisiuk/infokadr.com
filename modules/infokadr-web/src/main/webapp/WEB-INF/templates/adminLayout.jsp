@@ -30,6 +30,20 @@
 
     <tiles:insertAttribute name="header"/>
 
+    <c:if test="${flashError != null }">
+        <div class="alert alert-error">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                ${flashError}
+        </div>
+    </c:if>
+
+    <c:if test="${flashSuccess != null }">
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                ${flashSuccess}
+        </div>
+    </c:if>
+
     <tiles:insertAttribute name="content"/>
 
 </div>

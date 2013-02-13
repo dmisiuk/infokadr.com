@@ -7,15 +7,23 @@
     <div class="span2">
 
     </div>
-    <div id="title" class="span6">${trailer.name}
-        <div class="btn-group">
-            <button class="btn  btn-primary btn-mini dropdown-toggle" style="font-size: 12px;font-weight: bold;">ещё
+    <div id="title" class="span6">
+        ${trailer.name}
+    </div>
+
+    <%--<div class="span2" style="text-align: right">--%>
+    <%--<button class="btn btn-mini btn-primary" style="font-size: 12px;font-weight: bold;">кадросюжет</button>--%>
+    <%--</div>--%>
+    <div class="span2">
+        <div class="btn-group" style="float: right;">
+            <button class="btn  btn-primary btn-mini dropdown-toggle" style="font-size: 12px;font-weight: bold;">
+                ещё
                 <span class="caret"></span></button>
             <ul class="dropdown-menu">
-                <c:forEach var="tr" items="${trailer.film.trailers}">
+                <c:forEach var="tr" items="${trailers}">
                     <c:choose>
                         <c:when test="${tr.shortName == trailer.shortName}">
-                            <li class="disabled"><a href="/video/${tr.id}">${tr.shortName}</a></li>
+                            <li class="disabled"><a>${tr.shortName}</a></li>
                         </c:when>
                         <c:otherwise>
                             <li><a href="/video/${tr.id}">${tr.shortName}</a></li>
@@ -24,13 +32,6 @@
                 </c:forEach>
             </ul>
         </div>
-    </div>
-
-    <%--<div class="span2" style="text-align: right">--%>
-    <%--<button class="btn btn-mini btn-primary" style="font-size: 12px;font-weight: bold;">кадросюжет</button>--%>
-    <%--</div>--%>
-    <div class="span2">
-
     </div>
 </div>
 <br>

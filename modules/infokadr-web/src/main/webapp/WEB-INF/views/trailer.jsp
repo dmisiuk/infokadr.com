@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page isELIgnored="false" %>
 
 <c:set var="film" value="${trailer.film}"/>
@@ -21,12 +22,12 @@
     </div>
 
     <div class="span6">
-        <form>
+        <form:form commandName="trailer" method="POST">
             <fieldset>
                 <%@include file="/WEB-INF/views/trailerFieldset.jsp" %>
                 <button type="submit" class="btn"><i class="icon-ok"></i> Сохранить изменения в трейлере</button>
             </fieldset>
-        </form>
+        </form:form>
     </div>
 </div>
 

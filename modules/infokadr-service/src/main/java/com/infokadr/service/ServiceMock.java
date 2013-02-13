@@ -15,7 +15,8 @@ import java.util.List;
 public class ServiceMock implements IService {
 
 
-    private ArrayList<Film> filmList;
+    private List<Film> filmList = new ArrayList<Film>(10);
+    private List<Trailer> trailerList = new ArrayList<Trailer>(10);
     private Film film1, film2;
     private Trailer trailer1;
     private Trailer trailer2;
@@ -64,14 +65,14 @@ public class ServiceMock implements IService {
         trailer1.setFilm(film1);
         trailer2.setFilm(film1);
 
-        List<Trailer> trailerList = new ArrayList<Trailer>();
-        trailerList.add(trailer1);
-        trailerList.add(trailer2);
-        film1.setTrailers(trailerList);
+        film1.getTrailers().add(trailer1);
+        film1.getTrailers().add(trailer2);
 
-        filmList = new ArrayList<Film>();
         filmList.add(film1);
         filmList.add(film2);
+
+        trailerList.add(trailer1);
+        trailerList.add(trailer2);
     }
 
     @Override
@@ -89,7 +90,7 @@ public class ServiceMock implements IService {
 
     @Override
     public Film getFilm(Long id) {
-        for(Film film: filmList){
+        for (Film film : filmList) {
             if (film.getId().equals(id)) return film;
         }
         return null;
@@ -97,7 +98,7 @@ public class ServiceMock implements IService {
 
     @Override
     public void updateFilm(Film film) {
-
+        return;
     }
 
     @Override
@@ -111,8 +112,14 @@ public class ServiceMock implements IService {
     }
 
     @Override
-    public Trailer createTrailer(Trailer trailer, Long filmID) {
-        return null;
+    public Trailer createTrailer(Trailer trailer, Long filmId) {
+        Film film = getFilm(filmId);
+        trailer.setFilm(film);
+        film.getTrailers().add(trailer);
+        trailer.setId(next());
+        trailer.setTimestamp(new Date());
+        trailerList.add(trailer);
+        return trailer;
     }
 
     @Override
@@ -127,13 +134,9 @@ public class ServiceMock implements IService {
 
     @Override
     public Trailer getTrailer(Long id) {
-        if (id == 3) {
-            return trailer1;
+        for (Trailer trailer : trailerList) {
+            if (trailer.getId().equals(id)) return trailer;
         }
-        if (id == 4) {
-            return trailer2;
-        }
-
         return null;
     }
 
@@ -154,21 +157,17 @@ public class ServiceMock implements IService {
 
     @Override
     public Trailer getLastTrailer() {
-        return trailer1;
+        return trailerList.get(trailerList.size() - 1);
     }
 
     @Override
     public Trailer getTrailer(Long filmId, Long trailerId) {
-        if (filmId == 1 && trailerId == 3) {
-            return trailer1;
+        Trailer trailer = this.getTrailer(trailerId);
+        if (trailer != null && trailer.getFilm().getId().equals(filmId)) {
+            return trailer;
         }
-        if (filmId == 1 && trailerId == 4) {
-            return trailer2;
-        }
-
         return null;
     }
-
 
     private Long next() {
         return new Long(counter++);
