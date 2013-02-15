@@ -156,6 +156,33 @@ public class ServiceMock implements IService {
     }
 
     @Override
+    public List<Trailer> getAfter(Long id, Long amount) {
+        List<Trailer> afterList = new ArrayList<Trailer>();
+        boolean b = false;
+        int size = 0;
+        for (Trailer tr : trailerList) {
+            if (afterList.size() == amount) break;
+            if (b && afterList.size() < amount) afterList.add(tr);
+            if (tr.getId().equals(id)) b = true;
+        }
+        return afterList;
+    }
+
+    @Override
+    public List<Trailer> getBefore(Long id, Long amount) {
+        List<Trailer> beforeList = new ArrayList<Trailer>();
+        int size = trailerList.size();
+        boolean b = false;
+        for (int i = size - 1; i >= 0; i--) {
+            Trailer tr = trailerList.get(i);
+            if (beforeList.size() == amount) break;
+            if (b && beforeList.size() < amount) beforeList.add(tr);
+            if (tr.getId().equals(id)) b = true;
+        }
+        return beforeList;
+    }
+
+    @Override
     public Trailer getLastTrailer() {
         return trailerList.get(trailerList.size() - 1);
     }

@@ -5,7 +5,6 @@ import com.infokadr.domain.Film;
 import com.infokadr.domain.Trailer;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
-import org.hibernate.criterion.DetachedCriteria;
 
 import java.util.List;
 
@@ -171,7 +170,7 @@ public class ServiceImpl implements IService {
     public Trailer getTrailer(Long filmId, Long trailerId) {
         Trailer entity = null;
         try {
-            if(filmDao.read(filmId) != null){
+            if (filmDao.read(filmId) != null) {
                 entity = trailerDao.read(trailerId);
             }
         } catch (HibernateException he) {
@@ -208,6 +207,14 @@ public class ServiceImpl implements IService {
         }
     }
 
+    @Override
+    public List<Trailer> getAfter(Long id, Long amount) {
+        return null;
+    }
 
+    @Override
+    public List<Trailer> getBefore(Long id, Long amount) {
+        return null;
+    }
 
 }

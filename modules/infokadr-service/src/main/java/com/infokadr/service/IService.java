@@ -68,5 +68,8 @@ public interface IService {
      */
 
 
+    List<Trailer> getAfter(Long id, Long amount);
+
+    List<Trailer> getBefore(Long id, Long amount);
 
 }

@@ -39,11 +39,11 @@
 <div class="row" style="font-size: 14px">
     <div class="span2">
         <ul id="previous" class="nav nav-list">
-            <!--<li class="previous">-->
-            <!--<a href="#">&larr;</a>-->
-            <!--</li>-->
             <li class="disabled"><a href="#"><img src="../../resources/images/vlevo.png"></a></li>
             <li class="nav-header">Предыдущие трейлеры:</li>
+            <c:forEach var="tr" items="${trailersBefore}">
+                <li><a href="/video/${tr.id}" title="${tr.name}">${tr.film.rusName}</a></li>
+            </c:forEach>
 
         </ul>
     </div>
@@ -55,11 +55,11 @@
     </div>
     <div class="span2">
         <ul id="next" class="nav nav-list">
-            <!--<li class="previous">-->
-            <!--<a href="#">&rarr;</a>-->
-            <!--</li>-->
             <li class="disabled"><a href="#"><img src="../../resources/images/vpravo.png"></a></li>
             <li class="nav-header">Следующие трейлеры:</li>
+            <c:forEach var="tr" items="${trailersAfter}">
+                <li><a href="/video/${tr.id}" title="${tr.name}">${tr.film.rusName}</a></li>
+            </c:forEach>
         </ul>
     </div>
 </div>
