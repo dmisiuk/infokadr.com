@@ -183,6 +183,15 @@ public class ServiceMock implements IService {
     }
 
     @Override
+    public List<Film> findFilmsByName(String text) {
+        List<Film> films = new ArrayList<Film>(10);
+        for (Film f : filmList) {
+            if (f.getRusName().toLowerCase().contains(text.toLowerCase())) films.add(f);
+        }
+        return films;
+    }
+
+    @Override
     public Trailer getLastTrailer() {
         return trailerList.get(trailerList.size() - 1);
     }

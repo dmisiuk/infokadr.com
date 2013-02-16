@@ -5,8 +5,10 @@ import com.infokadr.service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,16 +17,20 @@ import java.util.List;
  * Time: 12:29 AM
  */
 @Controller
+@RequestMapping(value = "/film")
 public class FilmController {
 
     @Autowired
     private IService service;
 
-    @RequestMapping(value = "/films")
+    @RequestMapping(value = "search")
     public
     @ResponseBody
-    List<Film> getAllFilms() {
-        return service.getAllFilms();
+    List<String> getAllFilms(@RequestParam(value = "text") String text) {
+        List<String> names = new ArrayList<String>(10);
+        for (Film f : service.findFilmsByName(text)) {
+            names.add(f.getRusName());
+        }
+        return names;
     }
-
 }

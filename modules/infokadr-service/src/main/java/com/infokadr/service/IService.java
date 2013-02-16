@@ -72,4 +72,5 @@ public interface IService {
 
     List<Trailer> getBefore(Long id, Long amount);
 
+    List<Film> findFilmsByName(String text);
 }

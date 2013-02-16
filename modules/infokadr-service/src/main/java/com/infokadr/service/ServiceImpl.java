@@ -217,4 +217,9 @@ public class ServiceImpl implements IService {
         return null;
     }
 
+    @Override
+    public List<Film> findFilmsByName(String text) {
+        return null;
+    }
+
 }

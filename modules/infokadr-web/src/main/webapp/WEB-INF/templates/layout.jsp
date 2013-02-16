@@ -7,6 +7,8 @@
 <%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 
+<html>
+
 <head>
     <meta charset="UTF-8">
 
@@ -18,11 +20,12 @@
     <meta name="keywords"
           content="инфокадр, трейлеры, трейлеры фильмов, новые трейлеры, трейлеры онлайн, кадросюжеты, кадры из фильмов, сюжеты фильмов"/>
 
-    <link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/resources/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/resources/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="/resources/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="/resources/css/responsive-video.css" rel="stylesheet">
-    <script src="/resources/js/jquery.min.js" type="text/javascript"></script>
-    <script src="/resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/resources/js/jquery.js" type="text/javascript"></script>
+    <%--<script src="/resources/bootstrap/js/bootstrap.js" type="text/javascript"></script>--%>
+    <script type="text/javascript" src="/resources/bootstrap/js/bootstrap.js"></script>
     <link href="/resources/css/infokadr.css" rel="stylesheet">
 
 </head>
@@ -32,6 +35,20 @@
     $(document).ready(
             function () {
                 $('.dropdown-toggle').dropdown();
+                $("#search").typeahead({
+                    source: function (text, process) {
+                        $.ajax({
+                            url: "/film/search",
+                            type: "POST",
+                            data: "text=" + text,
+                            dataType: "JSON",
+                            async: true,
+                            success: function (data) {
+                                process(data);
+                            }
+                        })
+                    }
+                });
             }
     )
 </script>
@@ -57,8 +74,15 @@
                     <span class="add-on">
                         <i class="icon-search"></i>
                     </span>
-                        <input type="search" class="span3" placeholder="поиск по названию фильма" name="search"
-                               id="search">
+                        <input type="text"
+                               id="search"
+                               class="span3"
+                               name="text"
+                               style="margin: 0 auto;"
+                               data-provide="typeahead"
+                               placeholder="поиск фильма по названию"
+                               autocomplete="off"
+                               data-items="4">
                     </div>
                 </div>
             </div>
