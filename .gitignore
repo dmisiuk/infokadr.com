@@ -7,3 +7,4 @@ target
 *.ipr
 *.iws
 *.log
+rebel.xml

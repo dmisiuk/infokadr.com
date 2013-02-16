@@ -1,5 +1,7 @@
 package com.infokadr.domain;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -33,6 +35,7 @@ public class Trailer implements Serializable {
     @Column
     private Date timestamp;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     private Film film;
 

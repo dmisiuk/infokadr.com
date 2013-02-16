@@ -12,6 +12,7 @@
     <http use-expressions="true">
         <intercept-url pattern="/" access="permitAll"/>
         <intercept-url pattern="/video/**" access="permitAll"/>
+        <intercept-url pattern="/films" access="permitAll"/>
         <intercept-url pattern="/admin/**" access="hasRole('admin')"/>
         <intercept-url pattern="/**" access="denyAll"/>
         <form-login/>
