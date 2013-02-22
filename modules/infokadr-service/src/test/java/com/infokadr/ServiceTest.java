@@ -36,8 +36,8 @@ public class ServiceTest extends Assert {
     @Test
     public void test_create_get_Film() {
         Film film = new Film();
-        film.setRusName("sdlfs");
-        film.setEngName("sdasd") ;
+        film.setRusName("G.I. Joe: Бросок кобры 2");
+        film.setEngName("G.I. Joe: Retaliation") ;
         Film filmCreate = service.createFilm(film);
         assertNotNull(filmCreate);
         Film readFilm = service.getFilm(filmCreate.getId());
@@ -48,11 +48,11 @@ public class ServiceTest extends Assert {
     @Test
     public void test_create_get_all_Films() {
         Film film1 = new Film();
-        film1.setRusName("sdlfs");
-        film1.setEngName("sdasd");
+        film1.setRusName("G.I. Joe: Бросок кобры 2");
+        film1.setEngName("G.I. Joe: Retaliation");
         Film film2 = new Film();
-        film2.setRusName("sdlfs");
-        film2.setEngName("sdasd");
+        film2.setRusName("Железный человек 3");
+        film2.setEngName("Iron Man 3");
         Film filmCreate1 = service.createFilm(film1);
         Film filmCreate2 = service.createFilm(film2);
         List<Film> list = service.getAllFilms();
@@ -66,8 +66,8 @@ public class ServiceTest extends Assert {
     @Test
     public void test_create_update_Film() {
         Film film = new Film();
-        film.setRusName("sdlfs");
-        film.setEngName("sdasd");
+        film.setRusName("G.I. Joe: Бросок кобры 2");
+        film.setEngName("G.I. Joe: Retaliation");
         Film filmCreate = service.createFilm(film);
         assertNotNull(filmCreate);
         Film readFilm = service.getFilm(filmCreate.getId());
@@ -83,8 +83,8 @@ public class ServiceTest extends Assert {
     @Test
     public void test_create_delete_Film() {
         Film film = new Film();
-        film.setRusName("sdlfs");
-        film.setEngName("sdasd");
+        film.setRusName("G.I. Joe: Бросок кобры 2");
+        film.setEngName("G.I. Joe: Retaliation");
         Film filmCreate = service.createFilm(film);
         assertNotNull(filmCreate);
         Film readFilm = service.getFilm(filmCreate.getId());
@@ -96,8 +96,8 @@ public class ServiceTest extends Assert {
     @Test
     public void test_create_delete_byID_Film() {
         Film film = new Film();
-        film.setRusName("sdlfs");
-        film.setEngName("sdasd");
+        film.setRusName("G.I. Joe: Бросок кобры 2");
+        film.setEngName("G.I. Joe: Retaliation");
         Film filmCreate = service.createFilm(film);
         assertNotNull(filmCreate);
         Film readFilm = service.getFilm(filmCreate.getId());
@@ -109,9 +109,11 @@ public class ServiceTest extends Assert {
     @Test
     public void test_create_byFilm_get_Trailer() {
         Film film = new Film();
-        film.setRusName("sdlfs");
-        film.setEngName("sdasd");
+        film.setRusName("G.I. Joe: Бросок кобры 2");
+        film.setEngName("G.I. Joe: Retaliation");
         Trailer trailer = new Trailer();
+        trailer.setName("Международный трейлер №2 (дублированный)");
+        trailer.setShortName("Трейлер №2");
         Film filmCreate = service.createFilm(film);
         assertNotNull(filmCreate);
         Trailer trailerCreate = service.createTrailer(trailer, filmCreate);
@@ -130,9 +132,11 @@ public class ServiceTest extends Assert {
     @Test
     public void test_create_byID_get_Trailer() {
         Film film = new Film();
-        film.setRusName("sdlfs");
-        film.setEngName("sdasd");
+        film.setRusName("G.I. Joe: Бросок кобры 2");
+        film.setEngName("G.I. Joe: Retaliation");
         Trailer trailer = new Trailer();
+        trailer.setName("Международный трейлер №2 (дублированный)");
+        trailer.setShortName("Трейлер №2");
         Film filmCreate = service.createFilm(film);
         assertNotNull(filmCreate);
         Trailer trailerCreate = service.createTrailer(trailer, filmCreate.getId());
@@ -151,8 +155,8 @@ public class ServiceTest extends Assert {
     @Test
     public void test_getLast_Trailer() {
         Film film = new Film();
-        film.setRusName("sdlfs");
-        film.setEngName("sdasd");
+        film.setRusName("G.I. Joe: Бросок кобры 2");
+        film.setEngName("G.I. Joe: Retaliation");
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.MONTH, Calendar.JANUARY);
@@ -163,9 +167,13 @@ public class ServiceTest extends Assert {
         calendar.set(Calendar.SECOND, 30);
 
         Trailer trailer1 = new Trailer();
+        trailer1.setName("Международный трейлер №2 (дублированный)");
+        trailer1.setShortName("Трейлер №2");
         trailer1.setTimestamp(calendar.getTime());
         calendar.set(Calendar.SECOND, 35);
         Trailer trailer2 = new Trailer();
+        trailer2.setName("Международный трейлер №3 (дублированный)");
+        trailer2.setShortName("Трейлер №3");
         trailer2.setTimestamp(calendar.getTime());
 
         Film filmCreate = service.createFilm(film);
@@ -186,9 +194,12 @@ public class ServiceTest extends Assert {
     @Test
     public void test_get_FilmId_TrailerID_Trailer() {
         Film film = new Film();
-        film.setRusName("sdlfs");
-        film.setEngName("sdasd");
+        film.setRusName("G.I. Joe: Бросок кобры 2");
+        film.setEngName("G.I. Joe: Retaliation");
         Trailer trailer = new Trailer();
+        trailer.setName("Международный трейлер №2 (дублированный)");
+        trailer.setShortName("Трейлер №2");
+
         Film filmCreate = service.createFilm(film);
         assertNotNull(filmCreate);
         Trailer trailerCreate = service.createTrailer(trailer, filmCreate);
@@ -203,6 +214,8 @@ public class ServiceTest extends Assert {
         service.deleteFilm(readFilmAfter);
 
         Trailer trailer1 = new Trailer();
+        trailer1.setName("Международный трейлер №3 (дублированный)");
+        trailer1.setShortName("Трейлер №3");
         Trailer trailerCreate1 = service.createTrailer(trailer1, (Film) null);
         assertNotNull(trailerCreate1);
         Trailer readTrailer1 = service.getTrailer(1001l,trailerCreate1.getId());
@@ -213,9 +226,11 @@ public class ServiceTest extends Assert {
     @Test
     public void test_create_update_Trailer() {
         Film film = new Film();
-        film.setRusName("sdlfs");
-        film.setEngName("sdasd");
+        film.setRusName("G.I. Joe: Бросок кобры 2");
+        film.setEngName("G.I. Joe: Retaliation");
         Trailer trailer = new Trailer();
+        trailer.setName("Международный трейлер №2 (дублированный)");
+        trailer.setShortName("Трейлер №2");
         Film filmCreate = service.createFilm(film);
         assertNotNull(filmCreate);
         Trailer trailerCreate = service.createTrailer(trailer, filmCreate.getId());
@@ -234,9 +249,11 @@ public class ServiceTest extends Assert {
     @Test
     public void test_create_delete_Trailer() {
         Film film = new Film();
-        film.setRusName("sdlfs");
-        film.setEngName("sdasd");
+        film.setRusName("G.I. Joe: Бросок кобры 2");
+        film.setEngName("G.I. Joe: Retaliation");
         Trailer trailer = new Trailer();
+        trailer.setName("Международный трейлер №2 (дублированный)");
+        trailer.setShortName("Трейлер №2");
         Film filmCreate = service.createFilm(film);
         assertNotNull(filmCreate);
         Trailer trailerCreate = service.createTrailer(trailer, filmCreate);

@@ -29,7 +29,11 @@ public class DaoImpl<T, PK extends Serializable> implements Dao<T, PK> {
         log.debug(String.format("Created Dao for %s.", typeName));
     }
 
-    public void setSessionFactory(SessionFactory sessionFactory){
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
+
+    public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 

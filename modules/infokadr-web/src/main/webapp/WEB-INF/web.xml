@@ -56,7 +56,8 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-            /WEB-INF/mvc-dispatcher-servlet.xml,
+            <!--/WEB-INF/mvc-dispatcher-servlet.xml,-->
+            /WEB-INF/mvc-dispatcher-servlet-hibernate.xml,
             /WEB-INF/security-app-context.xml
         </param-value>
     </context-param>

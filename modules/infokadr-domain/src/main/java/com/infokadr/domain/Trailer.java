@@ -1,8 +1,10 @@
 package com.infokadr.domain;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -21,9 +23,13 @@ public class Trailer implements Serializable {
     private Long id;
 
     @Column
+    @NotBlank
+    @Size(min = 1)
     private String name;
 
     @Column
+    @NotBlank
+    @Size(min = 1)
     private String shortName;
 
     @Column
