@@ -24,10 +24,13 @@
         </property>
     </bean>
 
-    <bean id="service" class="com.infokadr.service.ServiceMock"/>
+    <!--<bean id="service" class="com.infokadr.service.ServiceMock"/>-->
+
+    <import resource="classpath:/service.xml"/>
 
     <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
         <property name="basename" value="/WEB-INF/messages">
-        </property></bean>
+        </property>
+    </bean>
 
 </beans>
