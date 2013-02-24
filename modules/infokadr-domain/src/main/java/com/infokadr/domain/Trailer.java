@@ -39,7 +39,7 @@ public class Trailer implements Serializable {
     private String url;
 
     @Column
-    private Date timestamp;
+    private Date dateadd;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
@@ -96,12 +96,12 @@ public class Trailer implements Serializable {
         this.film = film;
     }
 
-    public Date getTimestamp() {
-        return timestamp;
+    public Date getDateadd() {
+        return dateadd;
     }
 
-    public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
+    public void setDateadd(Date dateadd) {
+        this.dateadd = dateadd;
     }
 
     @Override
@@ -111,13 +111,13 @@ public class Trailer implements Serializable {
 
         Trailer trailer = (Trailer) o;
 
+        if (dateadd != null ? !dateadd.equals(trailer.dateadd) : trailer.dateadd != null) return false;
         if (description != null ? !description.equals(trailer.description) : trailer.description != null) return false;
         if (film != null ? !film.equals(trailer.film) : trailer.film != null) return false;
         if (id != null ? !id.equals(trailer.id) : trailer.id != null) return false;
         if (name != null ? !name.equals(trailer.name) : trailer.name != null) return false;
         if (shortName != null ? !shortName.equals(trailer.shortName) : trailer.shortName != null) return false;
         if (url != null ? !url.equals(trailer.url) : trailer.url != null) return false;
-        if (timestamp != null ? !timestamp.equals(trailer.timestamp) : trailer.timestamp != null) return false;
 
         return true;
     }
@@ -129,7 +129,7 @@ public class Trailer implements Serializable {
         result = 31 * result + (shortName != null ? shortName.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (url != null ? url.hashCode() : 0);
-        result = 31 * result + (timestamp != null ? timestamp.hashCode() : 0);
+        result = 31 * result + (dateadd != null ? dateadd.hashCode() : 0);
         result = 31 * result + (film != null ? film.hashCode() : 0);
         return result;
     }
@@ -142,6 +142,7 @@ public class Trailer implements Serializable {
                 ", shortName='" + shortName + '\'' +
                 ", description='" + description + '\'' +
                 ", url='" + url + '\'' +
+                ", dateadd=" + dateadd +
                 ", film=" + film +
                 '}';
     }

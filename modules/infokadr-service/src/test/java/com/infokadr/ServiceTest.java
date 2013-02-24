@@ -169,12 +169,12 @@ public class ServiceTest extends Assert {
         Trailer trailer1 = new Trailer();
         trailer1.setName("Международный трейлер №2 (дублированный)");
         trailer1.setShortName("Трейлер №2");
-        trailer1.setTimestamp(calendar.getTime());
+        trailer1.setDateadd(calendar.getTime());
         calendar.set(Calendar.SECOND, 35);
         Trailer trailer2 = new Trailer();
         trailer2.setName("Международный трейлер №3 (дублированный)");
         trailer2.setShortName("Трейлер №3");
-        trailer2.setTimestamp(calendar.getTime());
+        trailer2.setDateadd(calendar.getTime());
 
         Film filmCreate = service.createFilm(film);
         assertNotNull(filmCreate);

@@ -31,20 +31,20 @@ public class ServiceMock implements IService {
         film1.setId(new Long(next()));
         film1.setRusName("Шерлок Холмс: Игра теней");
         film1.setEngName("Sherlock Holmes: A Game of Shadows");
-        film1.setTimestamp(new Date());
+        film1.setDateadd(new Date());
 
         film2 = new Film();
         film2.setId(next());
         film2.setRusName("Батман");
         film2.setEngName("Batman");
-        film2.setTimestamp(new Date());
+        film2.setDateadd(new Date());
 
 
         trailer1 = new Trailer();
         trailer1.setId(next());
         trailer1.setName("Шерлок Холмс 2: Игра теней. Русский трейлер FTR '2011'. HD");
         trailer1.setShortName("FTR 2011");
-        trailer1.setTimestamp(new Date());
+        trailer1.setDateadd(new Date());
         trailer1.setDescription("год \n" +
                 "2011\n" +
                 "страна \n" +
@@ -57,7 +57,7 @@ public class ServiceMock implements IService {
         trailer2.setId(next());
         trailer2.setName("Обзор фильма - Шерлок Холмс: Игра теней");
         trailer2.setShortName("Обзор фильма");
-        trailer2.setTimestamp(new Date());
+        trailer2.setDateadd(new Date());
         trailer2.setDescription("«Шерлок Холмс: Игра теней» («Sherlock Holmes: A Game of Shadows») " +
                 "оправдает все ожидания! Подробности - в нашем обзоре.");
         trailer2.setUrl("http://www.youtube.com/embed/-O-_R5Y2DZA");
@@ -78,7 +78,7 @@ public class ServiceMock implements IService {
     @Override
     public Film createFilm(Film film) {
         film.setId(next());
-        film.setTimestamp(new Date());
+        film.setDateadd(new Date());
         filmList.add(film);
         return film;
     }
@@ -117,7 +117,7 @@ public class ServiceMock implements IService {
         trailer.setFilm(film);
         film.getTrailers().add(trailer);
         trailer.setId(next());
-        trailer.setTimestamp(new Date());
+        trailer.setDateadd(new Date());
         trailerList.add(trailer);
         return trailer;
     }

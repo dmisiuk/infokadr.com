@@ -46,6 +46,7 @@ public class ServiceImpl implements IService {
             filmDao.create(film);
         } catch (HibernateException he) {
             log.error(String.format("Failed to create product: %s.", film));
+            log.error(String.format(he.getMessage()));
         }
         return film;
     }
@@ -57,6 +58,7 @@ public class ServiceImpl implements IService {
             entities = filmDao.readAll();
         } catch (HibernateException he) {
             log.error("Failed to get list of films.");
+            log.error(String.format(he.getMessage()));
         }
         return entities;
     }
@@ -68,6 +70,7 @@ public class ServiceImpl implements IService {
             entity = filmDao.read(id);
         } catch (HibernateException he) {
             log.error(String.format("Failed to get film by id=%d.", id));
+            log.error(String.format(he.getMessage()));
         }
         return entity;
     }
@@ -78,6 +81,7 @@ public class ServiceImpl implements IService {
             filmDao.update(film);
         } catch (HibernateException he) {
             log.error(String.format("Failed to update film: %s.", film));
+            log.error(String.format(he.getMessage()));
         }
     }
 
@@ -88,6 +92,7 @@ public class ServiceImpl implements IService {
             filmDao.delete(entity);
         } catch (HibernateException he) {
             log.error(String.format("Failed to delete film by id=%d.", id));
+            log.error(String.format(he.getMessage()));
         }
     }
 
@@ -97,6 +102,7 @@ public class ServiceImpl implements IService {
             filmDao.delete(film);
         } catch (HibernateException he) {
             log.error(String.format("Failed to delete film: %s.", film));
+            log.error(String.format(he.getMessage()));
         }
     }
 
@@ -117,6 +123,7 @@ public class ServiceImpl implements IService {
             trailerDao.create(trailer);
         } catch (HibernateException he) {
             log.error(String.format("Failed to add trailer to film: trailer=%s, filmID=%s.", trailer, filmID));
+            log.error(String.format(he.getMessage()));
         }
         return trailer;
     }
@@ -129,6 +136,7 @@ public class ServiceImpl implements IService {
             trailerDao.create(trailer);
         } catch (HibernateException he) {
             log.error(String.format("Failed to add trailer to film: trailer=%s, film=%s.", trailer, film));
+            log.error(String.format(he.getMessage()));
         }
         return trailer;
     }
@@ -140,6 +148,7 @@ public class ServiceImpl implements IService {
             entities = trailerDao.readAll();
         } catch (HibernateException he) {
             log.error("Failed to get list of trailer.");
+            log.error(String.format(he.getMessage()));
         }
         return entities;
     }
@@ -151,6 +160,7 @@ public class ServiceImpl implements IService {
             entity = trailerDao.read(id);
         } catch (HibernateException he) {
             log.error(String.format("Failed to get trailer by id=%d.", id));
+            log.error(String.format(he.getMessage()));
         }
         return entity;
     }
@@ -162,6 +172,7 @@ public class ServiceImpl implements IService {
             entity = trailerDao.readLast();
         } catch (HibernateException he) {
             log.error(String.format("Failed to get last trailer"));
+            log.error(String.format(he.getMessage()));
         }
         return entity;
     }
@@ -175,6 +186,7 @@ public class ServiceImpl implements IService {
             }
         } catch (HibernateException he) {
             log.error(String.format("Failed to get film or trailer"));
+            log.error(String.format(he.getMessage()));
         }
         return entity;
     }
@@ -185,6 +197,7 @@ public class ServiceImpl implements IService {
             trailerDao.update(trailer);
         } catch (HibernateException he) {
             log.error(String.format("Failed to update trailer: %s.", trailer));
+            log.error(String.format(he.getMessage()));
         }
     }
 
@@ -195,6 +208,7 @@ public class ServiceImpl implements IService {
             trailerDao.delete(entity);
         } catch (HibernateException he) {
             log.error(String.format("Failed to delete trailer by id=%d.", id));
+            log.error(String.format(he.getMessage()));
         }
     }
 
@@ -204,8 +218,17 @@ public class ServiceImpl implements IService {
             trailerDao.delete(trailer);
         } catch (HibernateException he) {
             log.error(String.format("Failed to delete trailer: %s.", trailer));
+            log.error(String.format(he.getMessage()));
         }
     }
+
+    /**
+     * **************************************
+     * <p/>
+     * Service operations
+     * <p/>
+     * ***************************************
+     */
 
     @Override
     public List<Trailer> getAfter(Long id, Long amount) {

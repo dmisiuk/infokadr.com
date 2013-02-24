@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-">
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!--<mvc:annotation-driven/>-->
 
@@ -25,6 +25,30 @@
         </constructor-arg>
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
+
+    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+        <property name="transactionManager" ref="transactionManager"/>
+    </bean>
+
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="*"  propagation="SUPPORTS"  read-only="true"/>
+            <!--<tx:method name="read*" propagation="REQUIRED" rollback-for="HibernateException"/>-->
+            <tx:method name="update*" propagation="REQUIRED" rollback-for="HibernateException"/>
+            <tx:method name="delete*" propagation="REQUIRED" rollback-for="HibernateException"/>
+            <tx:method name="create*" propagation="REQUIRED" rollback-for="HibernateException"/>
+            <!--<tx:method name="readLast*" propagation="REQUIRED" rollback-for="HibernateException"/>-->
+            <!--<tx:method name="readQuery*" propagation="REQUIRED" rollback-for="HibernateException"/>-->
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:advisor pointcut="execution(* com.infokadr.service.ServiceImpl.*(..))" advice-ref="txAdvice"/>
+    </aop:config>
 
     <import resource="classpath:/hibernate.xml"/>
 

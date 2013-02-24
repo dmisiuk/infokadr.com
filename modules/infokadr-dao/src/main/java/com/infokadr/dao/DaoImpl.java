@@ -1,10 +1,7 @@
 package com.infokadr.dao;
 
 import org.apache.log4j.Logger;
-import org.hibernate.Criteria;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import org.hibernate.*;
 
 import java.io.Serializable;
 import java.util.List;
@@ -71,7 +68,7 @@ public class DaoImpl<T, PK extends Serializable> implements Dao<T, PK> {
 
     @Override
     public T readLast() {
-        String sort = "timestamp";       //Rigid logic, remember the name of a date variable
+        String sort = "dateadd";       //Rigid logic, remember the name of a date variable
         log.debug(String.format("Get last %s sort by %s. ", typeName, sort));
         Query query = getSession().createQuery("from " + typeName +  " order by " + sort + " DESC");
         query.setMaxResults(1);

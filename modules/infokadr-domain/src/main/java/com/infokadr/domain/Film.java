@@ -34,7 +34,7 @@ public class Film implements Serializable {
     private String engName;
 
     @Column
-    private Date timestamp;
+    private Date dateadd;
 
     @Column
     private Long year;
@@ -69,14 +69,13 @@ public class Film implements Serializable {
         this.engName = engName;
     }
 
-    public Date getTimestamp() {
-        return timestamp;
+    public Date getDateadd() {
+        return dateadd;
     }
 
-    public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
+    public void setDateadd(Date dateadd) {
+        this.dateadd = dateadd;
     }
-
 
     public Long getYear() {
         return year;
@@ -101,10 +100,11 @@ public class Film implements Serializable {
 
         Film film = (Film) o;
 
+        if (dateadd != null ? !dateadd.equals(film.dateadd) : film.dateadd != null) return false;
         if (engName != null ? !engName.equals(film.engName) : film.engName != null) return false;
         if (id != null ? !id.equals(film.id) : film.id != null) return false;
         if (rusName != null ? !rusName.equals(film.rusName) : film.rusName != null) return false;
-        if (timestamp != null ? !timestamp.equals(film.timestamp) : film.timestamp != null) return false;
+        if (trailers != null ? !trailers.equals(film.trailers) : film.trailers != null) return false;
         if (year != null ? !year.equals(film.year) : film.year != null) return false;
 
         return true;
@@ -115,11 +115,11 @@ public class Film implements Serializable {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (rusName != null ? rusName.hashCode() : 0);
         result = 31 * result + (engName != null ? engName.hashCode() : 0);
-        result = 31 * result + (timestamp != null ? timestamp.hashCode() : 0);
+        result = 31 * result + (dateadd != null ? dateadd.hashCode() : 0);
         result = 31 * result + (year != null ? year.hashCode() : 0);
+        result = 31 * result + (trailers != null ? trailers.hashCode() : 0);
         return result;
     }
-
 
     @Override
     public String toString() {
@@ -127,7 +127,7 @@ public class Film implements Serializable {
                 "id=" + id +
                 ", rusName='" + rusName + '\'' +
                 ", engName='" + engName + '\'' +
-                ", timestamp=" + timestamp +
+                ", dateadd=" + dateadd +
                 ", year=" + year +
                 '}';
     }

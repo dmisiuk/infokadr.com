@@ -246,17 +246,17 @@ public class DaoTest extends Assert {
         Film film1 = new Film();
         film1.setEngName("G.I. Joe: Retaliation");
         film1.setRusName("G.I. Joe: Бросок кобры 2");
-        film1.setTimestamp(calendar.getTime());
+        film1.setDateadd(calendar.getTime());
         Film film2 = new Film();
         film2.setEngName("Parker");
         film2.setRusName("Паркер");
         calendar.set(Calendar.MINUTE, 17);
-        film2.setTimestamp(calendar.getTime());
+        film2.setDateadd(calendar.getTime());
         Film film3 = new Film();
         film3.setEngName("Iron Man 3");
         film3.setRusName("Железный человек 3");
         calendar.set(Calendar.MINUTE, 16);
-        film3.setTimestamp(calendar.getTime());
+        film3.setDateadd(calendar.getTime());
 
         Long id1 = filmDao.create(film1);
         Long id2 = filmDao.create(film2);
