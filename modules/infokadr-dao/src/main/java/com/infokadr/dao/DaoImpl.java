@@ -67,10 +67,21 @@ public class DaoImpl<T, PK extends Serializable> implements Dao<T, PK> {
     }
 
     @Override
+    public List<T> readQuery(String query, Long amount) {
+        log.debug(String.format("Get list by query %s amount.", query));
+        List<T> list;
+        Query queryHQL = getSession().createQuery("from " + typeName +" " + query);
+        queryHQL.setMaxResults((int) (long) amount);
+        list = (List<T>) queryHQL.list();
+        log.debug(String.format("Got %d entities", list == null ? 0 : list.size()));
+        return list;
+    }
+
+    @Override
     public T readLast() {
         String sort = "dateadd";       //Rigid logic, remember the name of a date variable
         log.debug(String.format("Get last %s sort by %s. ", typeName, sort));
-        Query query = getSession().createQuery("from " + typeName +  " order by " + sort + " DESC");
+        Query query = getSession().createQuery("from " + typeName + " order by " + sort + " DESC");
         query.setMaxResults(1);
         T t = (T) query.uniqueResult();
         log.debug(String.format("Got %s: %s.", typeName, t));

@@ -20,6 +20,8 @@ public interface Dao<T, PK extends Serializable> {
 
     List<T> readQuery(String query);
 
+    List<T> readQuery(String query, Long amount);
+
     T readLast();
 
     T update(T t);

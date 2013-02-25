@@ -232,12 +232,30 @@ public class ServiceImpl implements IService {
 
     @Override
     public List<Trailer> getAfter(Long id, Long amount) {
-        return null;
+        List<Trailer> entities = null;
+        String query="";
+        try {
+            query = "where id>" + id +" order by id ASC";
+            entities = trailerDao.readQuery(query, amount);
+        } catch (HibernateException he) {
+            log.error("Failed to get list of trailer.");
+            log.error(String.format(he.getMessage()));
+        }
+        return entities;
     }
 
     @Override
     public List<Trailer> getBefore(Long id, Long amount) {
-        return null;
+        List<Trailer> entities = null;
+        String query="";
+        try {
+            query = "where id<" + id +" order by id DESC";
+            entities = trailerDao.readQuery(query, amount);
+        } catch (HibernateException he) {
+            log.error("Failed to get list of trailer.");
+            log.error(String.format(he.getMessage()));
+        }
+        return entities;
     }
 
     @Override

@@ -1,4 +1,3 @@
-
 INSERT INTO `film` VALUES ('1', '2013-02-23 14:52:14', 'G.I. Joe: Retaliation', 'G.I. Joe: Бросок кобры 2', '2013');
 INSERT INTO `film` VALUES ('2', '2013-02-23 14:52:44',  'Iron Man 3', 'Железный человек 3', '2013');
 INSERT INTO `film` VALUES ('3', '2013-02-22 15:12:22', 'Pacific Rim', 'Тихоокеанский рубеж', '2013');
