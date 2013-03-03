@@ -104,7 +104,7 @@ public class Film implements Serializable {
         if (engName != null ? !engName.equals(film.engName) : film.engName != null) return false;
         if (id != null ? !id.equals(film.id) : film.id != null) return false;
         if (rusName != null ? !rusName.equals(film.rusName) : film.rusName != null) return false;
-        if (trailers != null ? !trailers.equals(film.trailers) : film.trailers != null) return false;
+        //if (trailers != null ? !trailers.equals(film.trailers) : film.trailers != null) return false;
         if (year != null ? !year.equals(film.year) : film.year != null) return false;
 
         return true;
@@ -117,7 +117,7 @@ public class Film implements Serializable {
         result = 31 * result + (engName != null ? engName.hashCode() : 0);
         result = 31 * result + (dateadd != null ? dateadd.hashCode() : 0);
         result = 31 * result + (year != null ? year.hashCode() : 0);
-        result = 31 * result + (trailers != null ? trailers.hashCode() : 0);
+        //result = 31 * result + (trailers != null ? trailers.hashCode() : 0);
         return result;
     }
 

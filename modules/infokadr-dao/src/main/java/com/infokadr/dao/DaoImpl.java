@@ -70,7 +70,7 @@ public class DaoImpl<T, PK extends Serializable> implements Dao<T, PK> {
     public List<T> readQuery(String query, Long amount) {
         log.debug(String.format("Get list by query %s amount.", query));
         List<T> list;
-        Query queryHQL = getSession().createQuery("from " + typeName +" " + query);
+        Query queryHQL = getSession().createQuery("from " + typeName + " " + query);
         queryHQL.setMaxResults((int) (long) amount);
         list = (List<T>) queryHQL.list();
         log.debug(String.format("Got %d entities", list == null ? 0 : list.size()));
@@ -105,7 +105,7 @@ public class DaoImpl<T, PK extends Serializable> implements Dao<T, PK> {
         }
     }
 
-    public Session getSession(){
+    public Session getSession() {
         Session session = sessionFactory.getCurrentSession();
         log.debug(String.format("Got current session for %s: %s.", typeName, session));
         return session;
@@ -129,6 +129,16 @@ public class DaoImpl<T, PK extends Serializable> implements Dao<T, PK> {
         log.debug(String.format("Find <%s> by criteria %s.", typeName, c));
         List<T> list = c.list();
         log.debug(String.format("Found %d entities", list == null ? 0 : list.size()));
+        return list;
+    }
+
+    @Override
+    public List<T> findByName(String name, String value) {
+        log.debug(String.format("Get list by name %s.", name));
+        List<T> list;
+        Query queryHQL = getSession().createQuery("from " + typeName +" where "+ name +" like :value");
+        list = queryHQL.setParameter("value", "%" + value + "%").list();
+        log.debug(String.format("Got %d entities", list == null ? 0 : list.size()));
         return list;
     }
 

@@ -34,4 +34,6 @@ public interface Dao<T, PK extends Serializable> {
 
     List<T> findAll(Criteria c);
 
+    List<T> findByName(String name, String value);
+
 }

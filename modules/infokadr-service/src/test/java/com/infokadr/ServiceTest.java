@@ -139,6 +139,7 @@ public class ServiceTest extends Assert {
         trailer.setShortName("Трейлер №2");
         Film filmCreate = service.createFilm(film);
         assertNotNull(filmCreate);
+
         Trailer trailerCreate = service.createTrailer(trailer, filmCreate.getId());
         assertNotNull(trailerCreate);
         Film readFilm = service.getFilm(filmCreate.getId());
@@ -265,8 +266,23 @@ public class ServiceTest extends Assert {
         assertNotNull(readFilmAfter);
         assertEquals(0, readFilmAfter.getTrailers().size());
         service.deleteFilm(readFilmAfter);
-
     }
+
+    @Test
+    public void test_find_Film() {
+        Film film = new Film();
+        film.setRusName("Паркер");
+        film.setEngName("Parker");
+        Film filmCreate = service.createFilm(film);
+        assertNotNull(filmCreate);
+        List<Film> list = service.findFilmsByName("Par");
+        assertEquals(1, list.size());
+        Film readFilm = service.getFilm(filmCreate.getId());
+        service.deleteFilm(readFilm);
+        Film deletedFilm = service.getFilm(filmCreate.getId());
+        assertNull(deletedFilm);
+    }
+
     /*
     @Test
     public void test_create_delete_byID_Trailer() {

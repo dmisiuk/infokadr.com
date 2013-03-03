@@ -238,7 +238,7 @@ public class ServiceImpl implements IService {
             query = "where id>" + id +" order by id ASC";
             entities = trailerDao.readQuery(query, amount);
         } catch (HibernateException he) {
-            log.error("Failed to get list of trailer.");
+            log.error("Failed to get list After of trailer.");
             log.error(String.format(he.getMessage()));
         }
         return entities;
@@ -252,7 +252,7 @@ public class ServiceImpl implements IService {
             query = "where id<" + id +" order by id DESC";
             entities = trailerDao.readQuery(query, amount);
         } catch (HibernateException he) {
-            log.error("Failed to get list of trailer.");
+            log.error("Failed to get list Before of trailer.");
             log.error(String.format(he.getMessage()));
         }
         return entities;
@@ -260,7 +260,14 @@ public class ServiceImpl implements IService {
 
     @Override
     public List<Film> findFilmsByName(String text) {
-        return null;
+        List<Film> entities = null;
+        try {
+            entities = filmDao.findByName("engName", text);
+        } catch (HibernateException he) {
+            log.error("Failed to get list find of film.");
+            log.error(String.format(he.getMessage()));
+        }
+        return entities;
     }
 
 }
