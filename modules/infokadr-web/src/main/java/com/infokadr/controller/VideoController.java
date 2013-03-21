@@ -23,6 +23,9 @@ public class VideoController {
     @RequestMapping(value = "/")
     public String getLastVideo(ModelMap model) {
         Trailer trailer = service.getLastTrailer();
+        if (trailer == null){
+            return "redirect:/admin";
+        }
         model.put("title", "Инфокадр: трейлеры фильмов 2012-2013 и кадросюжеты | новые трейлеры онлайн | кадры из фильмов");
         return fillModel(model, trailer);
     }
