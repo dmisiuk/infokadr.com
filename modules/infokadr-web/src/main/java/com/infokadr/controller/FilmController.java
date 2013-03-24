@@ -29,7 +29,11 @@ public class FilmController {
     List<String> getAllFilms(@RequestParam(value = "text") String text) {
         List<String> names = new ArrayList<String>(10);
         for (Film f : service.findFilmsByName(text)) {
-            names.add(f.getRusName());
+            if (text.matches("^[\\w]+$")) {
+                names.add(f.getEngName());
+            } else {
+                names.add(f.getRusName());
+            }
         }
         return names;
     }

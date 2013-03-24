@@ -6,6 +6,7 @@ import com.infokadr.domain.Trailer;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -117,6 +118,7 @@ public class ServiceImpl implements IService {
     @Override
     public Trailer createTrailer(Trailer trailer, Long filmID) {
         try {
+            trailer.setDateadd(new Date());
             Film entity = filmDao.read(filmID);
             //entity.getTrailers().add(trailer);
             trailer.setFilm(entity);
@@ -233,9 +235,9 @@ public class ServiceImpl implements IService {
     @Override
     public List<Trailer> getAfter(Long id, Long amount) {
         List<Trailer> entities = null;
-        String query="";
+        String query = "";
         try {
-            query = "where id>" + id +" order by id ASC";
+            query = "where id>" + id + " order by id ASC";
             entities = trailerDao.readQuery(query, amount);
         } catch (HibernateException he) {
             log.error("Failed to get list After of trailer.");
@@ -247,9 +249,9 @@ public class ServiceImpl implements IService {
     @Override
     public List<Trailer> getBefore(Long id, Long amount) {
         List<Trailer> entities = null;
-        String query="";
+        String query = "";
         try {
-            query = "where id<" + id +" order by id DESC";
+            query = "where id<" + id + " order by id DESC";
             entities = trailerDao.readQuery(query, amount);
         } catch (HibernateException he) {
             log.error("Failed to get list Before of trailer.");
@@ -262,7 +264,12 @@ public class ServiceImpl implements IService {
     public List<Film> findFilmsByName(String text) {
         List<Film> entities = null;
         try {
-            entities = filmDao.findByName("engName", text);
+            if (text.matches("^[\\w]+$")) {
+                entities = filmDao.findByName("engName", text);
+            } else {
+                entities = filmDao.findByName("rusName", text);
+            }
+
         } catch (HibernateException he) {
             log.error("Failed to get list find of film.");
             log.error(String.format(he.getMessage()));
