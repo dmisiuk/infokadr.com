@@ -53,7 +53,8 @@ public class DaoImpl<T, PK extends Serializable> implements Dao<T, PK> {
     @Override
     public List<T> readAll() {
         log.debug(String.format("Get all <%s>.", typeName));
-        List<T> list = getSession().createCriteria(type).list();
+        //List<T> list = getSession().createCriteria(type).list();
+        List<T> list = getSession().createQuery("from " + typeName).list();
         log.debug(String.format("Got %d products", list == null ? 0 : list.size()));
         return list;
     }
