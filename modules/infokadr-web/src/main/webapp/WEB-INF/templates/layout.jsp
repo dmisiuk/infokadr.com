@@ -24,6 +24,7 @@
     <link href="/resources/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="/resources/css/responsive-video.css" rel="stylesheet">
     <script src="/resources/js/jquery.js" type="text/javascript"></script>
+    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
     <%--<script src="/resources/bootstrap/js/bootstrap.js" type="text/javascript"></script>--%>
     <script type="text/javascript" src="/resources/bootstrap/js/bootstrap.js"></script>
     <link href="/resources/css/infokadr.css" rel="stylesheet">
@@ -31,27 +32,92 @@
 </head>
 <body style="background-color: whiteSmoke">
 
+<style>
+    .ui-autocomplete {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1000;
+        float: left;
+        display: none;
+        min-width: 160px;
+        _width: 160px;
+        padding: 4px 0;
+        margin: 2px 0 0 0;
+        list-style: none;
+        background-color: #ffffff;
+        border-color: #ccc;
+        border-color: rgba(0, 0, 0, 0.2);
+        border-style: solid;
+        border-width: 1px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        -webkit-background-clip: padding-box;
+        -moz-background-clip: padding;
+        background-clip: padding-box;
+        *border-right-width: 2px;
+        *border-bottom-width: 2px;
+
+    .ui-menu-item > a.ui-corner-all {
+        display: block;
+        padding: 3px 15px;
+        clear: both;
+        font-weight: normal;
+        line-height: 18px;
+        color: #555555;
+        white-space: nowrap;
+
+    &.ui-state-hover, &.ui-state-active {
+        color: #ffffff;
+        text-decoration: none;
+        background-color: #0088cc;
+        border-radius: 0px;
+        -webkit-border-radius: 0px;
+        -moz-border-radius: 0px;
+        background-image: none;
+    }
+
+        }
+
+        }
+
+</style>
+
 <script>
     $(document).ready(
             function () {
                 $('.dropdown-toggle').dropdown();
-                $("#search").typeahead({
-                    source: function (text, process) {
-                        $.ajax({
-                            url: "/film/search",
-                            type: "POST",
-                            data: "text=" + text,
-                            dataType: "JSON",
-                            async: true,
-                            success: function (data) {
-                                process(data);
-                            }
-                        })
+            }
+    );
+
+
+    $(function () {
+
+        $("#films").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "/film/searh-jquery-ui",
+                    dataType: 'json',
+                    data: {
+                        term: request.term
+                    },
+                    success: function (data) {
+                        response(data);
                     }
                 });
+            },
+            minLength: 1,
+            select: function (event, ui) {
+                window.location.href = "/video/" + ui.item.id;
             }
-    )
+        });
+    });
 </script>
+
 
 <div class="container">
     <br>
@@ -67,6 +133,7 @@
                 </sec:authorize>
             </ul>
         </div>
+
         <div style="text-align: right" class="span6">
             <div class="control-group">
                 <div class="controls">
@@ -75,14 +142,8 @@
                         <i class="icon-search"></i>
                     </span>
                         <input type="text"
-                               id="search"
-                               class="span3"
-                               name="text"
-                               style="margin: 0 auto;"
-                               data-provide="typeahead"
-                               placeholder="поиск фильма по названию"
-                               autocomplete="off"
-                               data-items="4">
+                               id="films"
+                               class="span3">
                     </div>
                 </div>
             </div>
