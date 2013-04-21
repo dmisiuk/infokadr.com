@@ -206,8 +206,11 @@ public class ServiceImpl implements IService {
     @Override
     public void deleteTrailer(Long id) {
         try {
-            Trailer entity = trailerDao.read(id);
-            trailerDao.delete(entity);
+            Trailer trailer = trailerDao.read(id);
+            Film film = trailer.getFilm();
+            film.getTrailers().remove(trailer);
+            trailerDao.delete(trailer);
+            filmDao.update(trailer.getFilm());
         } catch (HibernateException he) {
             log.error(String.format("Failed to delete trailer by id=%d.", id));
             log.error(String.format(he.getMessage()));

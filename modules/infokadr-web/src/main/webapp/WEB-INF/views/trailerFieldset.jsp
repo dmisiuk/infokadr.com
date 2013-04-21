@@ -10,16 +10,16 @@
 
 <label>Короткое название(уникальное)</label>
 <form:errors path="shortName" cssClass="help-block"/>
-<form:input path="shortName" cssStyle="width: 70%"/>
+<form:input path="shortName" cssStyle="width: 70%" required="true"/>
 
 <label>YouTube url(формат http://www.youtube.com/embed/-O-_R5Y2DZA)</label>
 <form:errors path="url" cssClass="help-block"/>
-<form:input path="url" style="width: 70%"/>
+<form:input path="url" style="width: 70%" required="true"/>
 
 <label>Название трейлера:</label>
 <form:errors path="name" cssClass="help-block"/>
-<form:textarea path="name" rows="3" style="width: 90%"/>
+<form:textarea path="name" rows="3" style="width: 90%" required="true"/>
 
 <label>Описание трейлера:</label>
 <form:errors path="description" cssClass="help-block"/>
-<form:textarea path="description" rows="5" style="width: 90%"/>
+<form:textarea path="description" rows="5" style="width: 90%" required="true"/>

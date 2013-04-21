@@ -10,11 +10,11 @@
 
 <label>Название фильма на руском:</label>
 <form:errors path="rusName" cssClass="help-block"/>
-<form:textarea path="rusName" rows="3" style="width: 90%"/>
+<form:textarea path="rusName" rows="3" style="width: 90%" required="true"/>
 
 
 <label>Название фильма на английском:</label>
 <form:errors path="engName" cssClass="help-block"/>
-<form:textarea path="engName" rows="3" style="width: 90%"/>
+<form:textarea path="engName" rows="3" style="width: 90%" required="true"/>
 
 

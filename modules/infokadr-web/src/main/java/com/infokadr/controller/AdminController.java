@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -32,7 +33,6 @@ public class AdminController {
         model.put("title", "Все фильмы");
         return "admin";
     }
-
 
     @RequestMapping(value = "/admin/film/new", method = RequestMethod.GET)
     public String showAddFilm(ModelMap model) {
@@ -125,5 +125,10 @@ public class AdminController {
         return "redirect:/admin/film/{filmId}/video/{trailerId}";
     }
 
-
+    @RequestMapping(value = "/admin/film/{filmId}/video/{trailerId}", method = RequestMethod.DELETE)
+    @ResponseBody
+    public boolean deleteTrailer(@PathVariable Long trailerId) {
+        service.deleteTrailer(trailerId);
+        return true;
+    }
 }

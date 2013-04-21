@@ -269,6 +269,28 @@ public class ServiceTest extends Assert {
     }
 
     @Test
+    public void testCreateDeleteTrailerById() {
+        Film film = new Film();
+        film.setRusName("G.I. Joe: Бросок кобры 2");
+        film.setEngName("G.I. Joe: Retaliation");
+        Trailer trailer = new Trailer();
+        trailer.setName("Международный трейлер №2 (дублированный)");
+        trailer.setShortName("Трейлер №2");
+        Film filmCreate = service.createFilm(film);
+        assertNotNull(filmCreate);
+        Trailer trailerCreate = service.createTrailer(trailer, filmCreate);
+        assertNotNull(trailerCreate);
+        Film readFilm = service.getFilm(filmCreate.getId());
+        Trailer readTrailer = service.getTrailer(trailerCreate.getId());
+        service.deleteTrailer(readTrailer.getId());
+        assertNull(service.getTrailer(readTrailer.getId()));
+        Film readFilmAfter = service.getFilm(readFilm.getId());
+        assertNotNull(readFilmAfter);
+        assertEquals(0, readFilmAfter.getTrailers().size());
+        service.deleteFilm(readFilmAfter);
+    }
+
+    @Test
     public void test_find_Film() {
         Film film = new Film();
         film.setRusName("Паркер");

@@ -13,6 +13,30 @@
     </tiles:putAttribute>
 </tiles:insertTemplate>
 
+<script>
+    function deleteTrailer(trailerId, filmId, name){
+        var b = confirm("Delete trailer " + name);
+        var url ="/admin/film/" + filmId + "/video/" +trailerId;
+        var successFunction = function(){
+            console.log("deleted" + name);
+            window.location.href="/admin/film/"+filmId
+        }
+
+        var errorFunction =function(data) {
+            alert("error delete")
+        }
+
+        if(b){
+            $.ajax({
+                type: "DELETE",
+                url: url,
+                success: successFunction,
+                error: errorFunction
+            });
+        }
+    }
+</script>
+
 <div class="row">
     <div class="span12">
         <h2>${film.rusName}</h2>
@@ -50,7 +74,7 @@
                                 <a href="${trailerUrl}">${trailer.shortName} </a>
                             </td>
                             <td>
-                                <a class="btn btn-mini" href="#"><i class="icon-remove"></i> удалить</a>
+                                <button class="btn btn-mini" onclick="deleteTrailer(${trailer.id},${film.id}, '${trailer.name}')"><i class="icon-remove"></i> удалить</button>
                             </td>
                         </tr>
                     </c:forEach>
