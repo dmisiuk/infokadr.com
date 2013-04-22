@@ -14,6 +14,8 @@
     </tiles:putAttribute>
 </tiles:insertTemplate>
 
+
+
 <div class="row">
     <div class="span12">
         <h2>Добавление нового трейлера</h2>
@@ -23,9 +25,16 @@
         <form:form commandName="trailer" method="POST">
             <fieldset>
                 <%@include file="/WEB-INF/views/trailerFieldset.jsp" %>
-                <button type="submit" class="btn"><i class="icon-ok"></i> Добавить новый трейлер в базу</button>
+                <button type="submit" id="save" class="btn"><i class="icon-ok"></i> Добавить новый трейлер в базу</button>
             </fieldset>
         </form:form>
+    </div>
+
+    <div class="span6">
+        <div class="flex-video widescreen">
+            <iframe id="film_url" src="${trailer.url}" frameborder="0"
+                    allowfullscreen=""></iframe>
+        </div>
     </div>
 
 </div>

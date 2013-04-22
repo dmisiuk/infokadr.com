@@ -25,9 +25,16 @@
         <form:form commandName="trailer" method="POST">
             <fieldset>
                 <%@include file="/WEB-INF/views/trailerFieldset.jsp" %>
-                <button type="submit" class="btn"><i class="icon-ok"></i> Сохранить изменения в трейлере</button>
+                <button type="submit" id="save" class="btn"><i class="icon-ok"></i> Сохранить изменения в трейлере</button>
             </fieldset>
         </form:form>
+    </div>
+
+    <div class="span6">
+        <div class="flex-video widescreen">
+            <iframe id="film_url" src="${trailer.url}" frameborder="0"
+                    allowfullscreen=""></iframe>
+        </div>
     </div>
 </div>
 
