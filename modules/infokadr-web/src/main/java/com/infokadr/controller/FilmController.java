@@ -43,16 +43,15 @@ public class FilmController {
         return names;
     }
 
-    @RequestMapping(value = "searh-jquery-ui")
+    @RequestMapping(value = "searchForLastTrailer")
     @ResponseBody
-    public List<JsonFilm> getJsonFilmsByName(@RequestParam(value = "term") String term) {
+    public List<JsonFilm> getJsonFilmsByNameLastTrailer(@RequestParam(value = "term") String term) {
         log.info("Search all films for term: " + term);
         List<JsonFilm> films = new ArrayList<JsonFilm>(10);
         for (Film f : service.findFilmsByName(term)) {
-            if (f.getTrailers().isEmpty()) {
+            if (f.getTrailers().isEmpty() && films.size() == 10) {
                 break;
             }
-
             String value;
             if (term.matches("^[\\w]+$")) {
                 value = f.getEngName();
@@ -63,6 +62,27 @@ public class FilmController {
             jsonFilm.setValue(value);
             Trailer lastTrailer = f.getTrailers().get(f.getTrailers().size() - 1);
             jsonFilm.setId(lastTrailer.getId());
+            films.add(jsonFilm);
+
+        }
+        return films;
+    }
+
+    @RequestMapping(value = "adminSearch")
+    @ResponseBody
+    public List<JsonFilm> getJsonFilmsByName(@RequestParam(value = "term") String term) {
+        log.info("Search all films for term: " + term);
+        List<JsonFilm> films = new ArrayList<JsonFilm>(10);
+        for (Film f : service.findFilmsByName(term)) {
+            String value;
+            if (term.matches("^[\\w]+$")) {
+                value = f.getEngName();
+            } else {
+                value = f.getRusName();
+            }
+            JsonFilm jsonFilm = new JsonFilm();
+            jsonFilm.setValue(value);
+            jsonFilm.setId(f.getId());
             films.add(jsonFilm);
         }
         return films;

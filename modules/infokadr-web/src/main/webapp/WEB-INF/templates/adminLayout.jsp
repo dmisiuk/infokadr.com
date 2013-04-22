@@ -22,6 +22,7 @@
     <link href="/resources/css/responsive-video.css" rel="stylesheet">
     <script src="/resources/js/jquery.min.js" type="text/javascript"></script>
     <script src="/resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
     <link href="/resources/css/infokadr.css" rel="stylesheet">
 
 </head>

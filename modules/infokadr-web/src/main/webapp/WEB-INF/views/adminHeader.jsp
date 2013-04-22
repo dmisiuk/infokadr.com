@@ -4,6 +4,36 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page isELIgnored="false" %>
 
+
+<script>
+    $(document).ready(
+            function () {
+                $('.dropdown-toggle').dropdown();
+            }
+    );
+    $(function () {
+        $("#films").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "/film/adminSearch",
+                    dataType: 'json',
+                    data: {
+                        term: request.term
+                    },
+                    success: function (data) {
+                        response(data);
+                    }
+                });
+            },
+            minLength: 1,
+            select: function (event, ui) {
+                window.location.href = "/admin/film/" + ui.item.id;
+            }
+        });
+    });
+</script>
+
+
 <br/>
 
 <div class="row">
@@ -20,8 +50,8 @@
                     <span class="add-on">
                         <i class="icon-search"></i>
                     </span>
-                    <input type="search" class="span3" placeholder="поиск по названию фильма" name="search"
-                           id="search">
+                    <input type="search" class="span3" placeholder="поиск по названию фильма"
+                           id="films">
                 </div>
             </div>
         </div>
