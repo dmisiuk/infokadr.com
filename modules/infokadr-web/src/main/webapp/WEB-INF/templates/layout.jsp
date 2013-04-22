@@ -61,6 +61,7 @@
         background-clip: padding-box;
         *border-right-width: 2px;
         *border-bottom-width: 2px;
+    }
 
     .ui-menu-item > a.ui-corner-all {
         display: block;
@@ -70,8 +71,9 @@
         line-height: 18px;
         color: #555555;
         white-space: nowrap;
+    }
 
-    &.ui-state-hover, &.ui-state-active {
+    .ui-widget-content .ui-state-focus {
         color: #ffffff;
         text-decoration: none;
         background-color: #0088cc;
@@ -80,10 +82,6 @@
         -moz-border-radius: 0px;
         background-image: none;
     }
-
-        }
-
-        }
 
 </style>
 

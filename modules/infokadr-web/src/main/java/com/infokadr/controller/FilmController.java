@@ -49,6 +49,9 @@ public class FilmController {
         log.info("Search all films for term: " + term);
         List<JsonFilm> films = new ArrayList<JsonFilm>(10);
         for (Film f : service.findFilmsByName(term)) {
+            if (f.getTrailers().isEmpty()) {
+                break;
+            }
 
             String value;
             if (term.matches("^[\\w]+$")) {
