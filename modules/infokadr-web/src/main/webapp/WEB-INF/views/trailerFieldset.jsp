@@ -44,6 +44,9 @@
         filmUrlFrame.attr("src", completeURL);
         urlLabel.text(completeURL);
         urlInput.val(completeURL);
+
+        var saveButton = $("#save");
+        saveButton.removeAttr("disabled");
     }
 
     var getYouTubeCode = function(str) {
