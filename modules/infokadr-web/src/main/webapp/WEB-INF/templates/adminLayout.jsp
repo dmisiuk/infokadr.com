@@ -1,9 +1,15 @@
-<!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@ page isELIgnored="false" %>
+
+
+<c:set var="root" value="/infokadr" scope="request"/>
+<c:set var="img" value="${root}/static/images" scope="request"/>
+<c:set var="css" value="${root}/static/css" scope="request"/>
+<c:set var="js" value="${root}/static/js" scope="request"/>
+<c:set var="bs" value="${root}/static/bootstrap" scope="request"/>
 
 <html>
 
@@ -17,13 +23,13 @@
     <meta name="keywords"
           content="инфокадр, трейлеры, трейлеры фильмов, новые трейлеры, трейлеры онлайн, кадросюжеты, кадры из фильмов, сюжеты фильмов"/>
 
-    <link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/resources/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link href="/resources/css/responsive-video.css" rel="stylesheet">
-    <script src="/resources/js/jquery.min.js" type="text/javascript"></script>
-    <script src="/resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <link href="${bs}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${bs}/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="${css}/responsive-video.css" rel="stylesheet">
+    <script src="${js}/jquery.min.js" type="text/javascript"></script>
+    <script src="${bs}/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
-    <link href="/resources/css/infokadr.css" rel="stylesheet">
+    <link href="${css}/infokadr.css" rel="stylesheet">
 
 </head>
 <body style="background-color: #fffafa">

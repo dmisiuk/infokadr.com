@@ -9,7 +9,7 @@
     <div class="span12">
         <ul class="breadcrumb">
             <tiles:insertAttribute name="lisBreadcrumb"/>
-            <a href="/j_spring_security_logout" style="float: right"> <i class="icon-off"></i> выйти</a>
+            <a href="${root}/j_spring_security_logout" style="float: right"> <i class="icon-off"></i> выйти</a>
         </ul>
     </div>
 </div>

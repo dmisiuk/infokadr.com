@@ -11,7 +11,7 @@
     <!--<mvc:annotation-driven/>-->
     <mvc:annotation-driven/>
     <context:component-scan base-package="com.infokadr.controller"/>
-    <mvc:resources mapping="/resources/**" location="/resources/"/>
+    <mvc:resources mapping="/static/**" location="/static/"/>
     <mvc:resources mapping="/favicon.ico" location="/favicon.ico"/>
 
     <!-- tiles resolver -->

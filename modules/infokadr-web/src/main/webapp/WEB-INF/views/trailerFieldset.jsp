@@ -93,13 +93,13 @@
     <div class="spoiler_body">
         <div style="border: solid">
             Из адресной строки<br>
-            <img src="/resources/images/examples/screen_01.png" class="img-polaroid">
+            <img src="${img}/examples/screen_01.png" class="img-polaroid">
             <hr>
             Из поля "Share"<br>
-            <img src="/resources/images/examples/screen_02.png" class="img-polaroid">
+            <img src="${img}/examples/screen_02.png" class="img-polaroid">
             <hr>
             Непосредственно YouTube идентификатор<br>
-            <img src="/resources/images/examples/screen_03.png" class="img-polaroid"><br>
+            <img src="${img}/examples/screen_03.png" class="img-polaroid"><br>
         </div>
     </div>
 </div>

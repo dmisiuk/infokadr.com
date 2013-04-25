@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page isELIgnored="false" %>
 
 <div class="row">
@@ -10,7 +11,7 @@
     <div id="title" class="span6">
         ${trailer.name}
             <sec:authorize access="hasRole('admin')">
-                    <a href="/admin/film/${trailer.film.id}/video/${trailer.id}">[редактировать]</a>
+                    <a href="${root}/admin/film/${trailer.film.id}/video/${trailer.id}">[редактировать]</a>
             </sec:authorize>
     </div>
 
@@ -29,7 +30,7 @@
                             <li class="disabled"><a>${tr.shortName}</a></li>
                         </c:when>
                         <c:otherwise>
-                            <li><a href="/video/${tr.id}">${tr.shortName}</a></li>
+                            <li><a href="${root}/video/${tr.id}">${tr.shortName}</a></li>
                         </c:otherwise>
                     </c:choose>
                 </c:forEach>
@@ -43,13 +44,13 @@
     <div class="span2">
         <ul id="previous" class="nav nav-list">
             <c:if test="${trailersBefore[0] != null}">
-                <li><a href="/video/${trailersBefore[0].id}">
-                    <img src="/resources/images/vlevo.png"></a>
+                <li><a href="${root}/video/${trailersBefore[0].id}">
+                    <img src="${img}/vlevo.png"></a>
                 </li>
                 <li class="nav-header">Предыдущие трейлеры:</li>
             </c:if>
             <c:forEach var="tr" items="${trailersBefore}">
-                <li><a href="/video/${tr.id}" title="${tr.name}">${tr.film.rusName}</a></li>
+                <li><a href="${root}/video/${tr.id}" title="${tr.name}">${tr.film.rusName}</a></li>
             </c:forEach>
 
         </ul>
@@ -63,14 +64,14 @@
     <div class="span2">
         <ul id="next" class="nav nav-list">
             <c:if test="${trailersAfter[0] != null}">
-                <li><a href="/video/${trailersAfter[0].id}">
-                    <img src="/resources/images/vpravo.png"></a>
+                <li><a href="${root}/video/${trailersAfter[0].id}">
+                    <img src="${img}/vpravo.png"></a>
                 </li>
                 <li class="nav-header">Следующие трейлеры:</li>
             </c:if>
 
             <c:forEach var="tr" items="${trailersAfter}">
-                <li><a href="/video/${tr.id}" title="${tr.name}">${tr.film.rusName}</a></li>
+                <li><a href="${root}/video/${tr.id}" title="${tr.name}">${tr.film.rusName}</a></li>
             </c:forEach>
         </ul>
     </div>

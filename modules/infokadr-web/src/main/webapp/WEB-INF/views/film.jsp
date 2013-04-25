@@ -8,7 +8,7 @@
 
 <tiles:insertTemplate template="/WEB-INF/views/breadcrumb.jsp">
     <tiles:putAttribute name="lisBreadcrumb">
-        <li><a href="/admin">Все фильмы</a> <span class="divider">/</span></li>
+        <li><a href="${root}/admin">Все фильмы</a> <span class="divider">/</span></li>
         <li class="active">${film.rusName}</li>
     </tiles:putAttribute>
 </tiles:insertTemplate>
@@ -16,10 +16,10 @@
 <script>
     function deleteTrailer(trailerId, filmId, name){
         var b = confirm("Delete trailer " + name);
-        var url ="/admin/film/" + filmId + "/video/" +trailerId;
+        var url ="${root}/admin/film/" + filmId + "/video/" +trailerId;
         var successFunction = function(){
             console.log("deleted" + name);
-            window.location.href="/admin/film/"+filmId
+            window.location.href="${root}/admin/film/"+filmId
         }
 
         var errorFunction =function(data) {
@@ -65,7 +65,7 @@
                     </thead>
                     <tbody>
                     <c:forEach var="trailer" items="${film.trailers}">
-                        <c:set var="trailerUrl" value="/admin/film/${film.id}/video/${trailer.id}"/>
+                        <c:set var="trailerUrl" value="${root}/admin/film/${film.id}/video/${trailer.id}"/>
                         <tr>
                             <td>
                                 <a href="${trailerUrl}">${trailer.name} </a>
@@ -86,7 +86,7 @@
             </c:otherwise>
         </c:choose>
         <p>
-            <a class="btn" href="/admin/film/${film.id}/video/new"><i class="icon-plus"></i> Добавить новый трейлер</a>
+            <a class="btn" href="${root}/admin/film/${film.id}/video/new"><i class="icon-plus"></i> Добавить новый трейлер</a>
         </p>
     </div>
 </div>

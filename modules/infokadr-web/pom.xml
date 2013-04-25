@@ -16,6 +16,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <db.connectionURL>${env.INFOKADR_DATABASE_URL}</db.connectionURL>
+        <db.username>${env.INFOKADR_DATABASE_USERNAME}</db.username>
+        <db.password>${env.INFOKADR_DATABASE_PASSWORD}</db.password>
     </properties>
 
     <dependencies>
@@ -95,4 +98,15 @@
         </dependency>
 
     </dependencies>
+
+    <build>
+        <finalName>infokadr</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+
 </project>
