@@ -247,9 +247,9 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>tomcat-maven-plugin</artifactId>
-                <version>1.1</version>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat6-maven-plugin</artifactId>
+                <version>2.1</version>
             </plugin>
 
             <plugin>
@@ -278,8 +278,8 @@
                                 </goals>
                             </execution>
                         </executions>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>tomcat-maven-plugin</artifactId>
+                        <groupId>org.apache.tomcat.maven</groupId>
+                        <artifactId>tomcat6-maven-plugin</artifactId>
                         <configuration>
                             <url>${env.INFOKADR_TOMCAT_URL}</url>
                             <server>${env.INFOKADR_TOMCAT_SERVER}</server>
