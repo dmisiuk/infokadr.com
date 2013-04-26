@@ -15,28 +15,30 @@ import java.util.List;
  * Time: 12:10 AM
  */
 @Entity
+@Table(name = "T_FILM")
 public class Film implements Serializable {
 
     private static final long serialVersionUID = -4702281079235073943L;
 
     @Id
     @GeneratedValue
+    @Column(name = "F_ID")
     private Long id;
 
-    @Column
+    @Column(name = "F_RUS_NAME", nullable = false)
     @NotBlank
     @Size(min = 1)
     private String rusName;
 
-    @Column
+    @Column(name = "F_ENG_NAME")
     @NotBlank
     @Size(min = 1)
     private String engName;
 
-    @Column
-    private Date dateadd;
+    @Column(name = "F_ADDED_DATE")
+    private Date addedDate;
 
-    @Column
+    @Column(name = "F_YEAR")
     private Long year;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "film", cascade = CascadeType.ALL)
@@ -69,12 +71,12 @@ public class Film implements Serializable {
         this.engName = engName;
     }
 
-    public Date getDateadd() {
-        return dateadd;
+    public Date getAddedDate() {
+        return addedDate;
     }
 
-    public void setDateadd(Date dateadd) {
-        this.dateadd = dateadd;
+    public void setAddedDate(Date addedDate) {
+        this.addedDate = addedDate;
     }
 
     public Long getYear() {
@@ -100,7 +102,7 @@ public class Film implements Serializable {
 
         Film film = (Film) o;
 
-        if (dateadd != null ? !dateadd.equals(film.dateadd) : film.dateadd != null) return false;
+        if (addedDate != null ? !addedDate.equals(film.addedDate) : film.addedDate != null) return false;
         if (engName != null ? !engName.equals(film.engName) : film.engName != null) return false;
         if (id != null ? !id.equals(film.id) : film.id != null) return false;
         if (rusName != null ? !rusName.equals(film.rusName) : film.rusName != null) return false;
@@ -115,7 +117,7 @@ public class Film implements Serializable {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (rusName != null ? rusName.hashCode() : 0);
         result = 31 * result + (engName != null ? engName.hashCode() : 0);
-        result = 31 * result + (dateadd != null ? dateadd.hashCode() : 0);
+        result = 31 * result + (addedDate != null ? addedDate.hashCode() : 0);
         result = 31 * result + (year != null ? year.hashCode() : 0);
         //result = 31 * result + (trailers != null ? trailers.hashCode() : 0);
         return result;
@@ -127,7 +129,7 @@ public class Film implements Serializable {
                 "id=" + id +
                 ", rusName='" + rusName + '\'' +
                 ", engName='" + engName + '\'' +
-                ", dateadd=" + dateadd +
+                ", addedDate=" + addedDate +
                 ", year=" + year +
                 '}';
     }

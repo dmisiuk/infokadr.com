@@ -1,10 +1,8 @@
 package com.infokadr;
 
-import com.infokadr.dao.Dao;
 import com.infokadr.domain.Film;
 import com.infokadr.domain.Trailer;
 import com.infokadr.service.IService;
-import com.infokadr.service.ServiceImpl;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -170,12 +168,12 @@ public class ServiceTest extends Assert {
         Trailer trailer1 = new Trailer();
         trailer1.setName("Международный трейлер №2 (дублированный)");
         trailer1.setShortName("Трейлер №2");
-        trailer1.setDateadd(calendar.getTime());
+        trailer1.setAddedDate(calendar.getTime());
         calendar.set(Calendar.SECOND, 35);
         Trailer trailer2 = new Trailer();
         trailer2.setName("Международный трейлер №3 (дублированный)");
         trailer2.setShortName("Трейлер №3");
-        trailer2.setDateadd(calendar.getTime());
+        trailer2.setAddedDate(calendar.getTime());
 
         Film filmCreate = service.createFilm(film);
         assertNotNull(filmCreate);

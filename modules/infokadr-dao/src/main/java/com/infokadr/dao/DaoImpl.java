@@ -80,7 +80,7 @@ public class DaoImpl<T, PK extends Serializable> implements Dao<T, PK> {
 
     @Override
     public T readLast() {
-        String sort = "dateadd";       //Rigid logic, remember the name of a date variable
+        String sort = "addedDate";       //Rigid logic, remember the name of a date variable
         log.debug(String.format("Get last %s sort by %s. ", typeName, sort));
         Query query = getSession().createQuery("from " + typeName + " order by " + sort + " DESC");
         query.setMaxResults(1);

@@ -14,35 +14,38 @@ import java.util.Date;
  * Time: 12:13 AM
  */
 @Entity
+@Table(name = "T_TRAILER")
 public class Trailer implements Serializable {
 
     private static final long serialVersionUID = 7411815236928129709L;
 
     @Id
     @GeneratedValue
+    @Column(name = "F_ID", nullable = false)
     private Long id;
 
-    @Column
+    @Column(name = "F_NAME", nullable = false)
     @NotBlank
     @Size(min = 1)
     private String name;
 
-    @Column
+    @Column(name = "F_SHORT_NAME")
     @NotBlank
     @Size(min = 1)
     private String shortName;
 
-    @Column
+    @Column(name = "F_DESCRIPTION")
     private String description;
 
-    @Column
+    @Column(name = "F_URL")
     private String url;
 
-    @Column
-    private Date dateadd;
+    @Column(name = "F_ADDED_DATE")
+    private Date addedDate;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "FILM_ID")
     private Film film;
 
     public Trailer() {
@@ -96,12 +99,12 @@ public class Trailer implements Serializable {
         this.film = film;
     }
 
-    public Date getDateadd() {
-        return dateadd;
+    public Date getAddedDate() {
+        return addedDate;
     }
 
-    public void setDateadd(Date dateadd) {
-        this.dateadd = dateadd;
+    public void setAddedDate(Date addedDate) {
+        this.addedDate = addedDate;
     }
 
     @Override
@@ -111,7 +114,7 @@ public class Trailer implements Serializable {
 
         Trailer trailer = (Trailer) o;
 
-        if (dateadd != null ? !dateadd.equals(trailer.dateadd) : trailer.dateadd != null) return false;
+        if (addedDate != null ? !addedDate.equals(trailer.addedDate) : trailer.addedDate != null) return false;
         if (description != null ? !description.equals(trailer.description) : trailer.description != null) return false;
         if (film != null ? !film.equals(trailer.film) : trailer.film != null) return false;
         if (id != null ? !id.equals(trailer.id) : trailer.id != null) return false;
@@ -129,7 +132,7 @@ public class Trailer implements Serializable {
         result = 31 * result + (shortName != null ? shortName.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (url != null ? url.hashCode() : 0);
-        result = 31 * result + (dateadd != null ? dateadd.hashCode() : 0);
+        result = 31 * result + (addedDate != null ? addedDate.hashCode() : 0);
         result = 31 * result + (film != null ? film.hashCode() : 0);
         return result;
     }
@@ -142,7 +145,7 @@ public class Trailer implements Serializable {
                 ", shortName='" + shortName + '\'' +
                 ", description='" + description + '\'' +
                 ", url='" + url + '\'' +
-                ", dateadd=" + dateadd +
+                ", addedDate=" + addedDate +
                 ", film=" + film +
                 '}';
     }

@@ -101,6 +101,8 @@ public class DaoTest extends Assert {
         Trailer trailer = new Trailer();
         trailer.setName("Международный трейлер №2 (дублированный)");
         trailer.setShortName("Трейлер №2");
+        trailer.setAddedDate(new Date());
+        trailer.getDescription();
         Long id = trailerDao.create(trailer);
         assertNotNull(id);
         Trailer readTrailer = trailerDao.read(id);
@@ -221,7 +223,7 @@ public class DaoTest extends Assert {
         Long id2 = filmDao.create(film2);
         Long id3 = filmDao.create(film3);
 
-        String query = "from Film where EngName='Parker' order by ID";
+        String query = "from Film where engName='Parker' order by id";
         List<Film> list = filmDao.readQuery(query);
         assertNotNull(list);
         assertEquals(1, list.size());
@@ -246,17 +248,17 @@ public class DaoTest extends Assert {
         Film film1 = new Film();
         film1.setEngName("G.I. Joe: Retaliation");
         film1.setRusName("G.I. Joe: Бросок кобры 2");
-        film1.setDateadd(calendar.getTime());
+        film1.setAddedDate(calendar.getTime());
         Film film2 = new Film();
         film2.setEngName("Parker");
         film2.setRusName("Паркер");
         calendar.set(Calendar.MINUTE, 17);
-        film2.setDateadd(calendar.getTime());
+        film2.setAddedDate(calendar.getTime());
         Film film3 = new Film();
         film3.setEngName("Iron Man 3");
         film3.setRusName("Железный человек 3");
         calendar.set(Calendar.MINUTE, 16);
-        film3.setDateadd(calendar.getTime());
+        film3.setAddedDate(calendar.getTime());
 
         Long id1 = filmDao.create(film1);
         Long id2 = filmDao.create(film2);

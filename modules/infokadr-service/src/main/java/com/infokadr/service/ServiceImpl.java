@@ -118,7 +118,7 @@ public class ServiceImpl implements IService {
     @Override
     public Trailer createTrailer(Trailer trailer, Long filmID) {
         try {
-            trailer.setDateadd(new Date());
+            trailer.setAddedDate(new Date());
             Film entity = filmDao.read(filmID);
             //entity.getTrailers().add(trailer);
             trailer.setFilm(entity);
