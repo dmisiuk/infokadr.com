@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.infokadr</groupId>
+    <artifactId>infokadr-static</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>infokadr-static</name>
+    <url>http://maven.apache.org</url>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${env.INFOKADR_STATIC_DIRECTORY}</directory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>com.github.goldin</groupId>
+                <artifactId>copy-maven-plugin</artifactId>
+                <version>0.2.5</version>
+                <executions>
+                    <execution>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <resources>
+
+                                <!--css-->
+                                <resource>
+                                    <targetPath>${env.INFOKADR_STATIC_DIRECTORY}/css</targetPath>
+                                    <directory>${basedir}/css</directory>
+                                    <failIfNotFound>false</failIfNotFound>
+                                    <preservePath>true</preservePath>
+                                </resource>
+
+                                <!--images-->
+                                <resource>
+                                    <targetPath>${env.INFOKADR_STATIC_DIRECTORY}/images</targetPath>
+                                    <directory>${basedir}/images</directory>
+                                    <failIfNotFound>false</failIfNotFound>
+                                    <preservePath>true</preservePath>
+                                </resource>
+
+                                <!--jscript-->
+                                <resource>
+                                    <targetPath>${env.INFOKADR_STATIC_DIRECTORY}/js</targetPath>
+                                    <directory>${basedir}/js</directory>
+                                    <failIfNotFound>false</failIfNotFound>
+                                    <preservePath>true</preservePath>
+                                </resource>
+
+                                <!--tinymce-->
+                                <resource>
+                                    <targetPath>${env.INFOKADR_STATIC_DIRECTORY}/bootstrap</targetPath>
+                                    <directory>${basedir}/bootstrap</directory>
+                                    <failIfNotFound>false</failIfNotFound>
+                                    <preservePath>true</preservePath>
+                                </resource>
+
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
