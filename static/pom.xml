@@ -60,7 +60,7 @@
                                     <preservePath>true</preservePath>
                                 </resource>
 
-                                <!--jscript-->
+                                <!--js-->
                                 <resource>
                                     <targetPath>${env.INFOKADR_STATIC_DIRECTORY}/js</targetPath>
                                     <directory>${basedir}/js</directory>
@@ -68,7 +68,7 @@
                                     <preservePath>true</preservePath>
                                 </resource>
 
-                                <!--tinymce-->
+                                <!--bootstrap-->
                                 <resource>
                                     <targetPath>${env.INFOKADR_STATIC_DIRECTORY}/bootstrap</targetPath>
                                     <directory>${basedir}/bootstrap</directory>
