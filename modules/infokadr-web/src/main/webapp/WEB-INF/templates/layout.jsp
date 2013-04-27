@@ -5,7 +5,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page isELIgnored="false" %>
 
-<c:set var="root" value="/infokadr" scope="request"/>
+<c:set var="root" value="${pageContext.servletContext.contextPath}" scope="request"/>
 <c:set var="img" value="${root}/static/images" scope="request"/>
 <c:set var="css" value="${root}/static/css" scope="request"/>
 <c:set var="js" value="${root}/static/js" scope="request"/>
