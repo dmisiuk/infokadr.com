@@ -30,6 +30,7 @@
                         response(data);
                     }
                 });
+                $(".ui-helper-hidden-accessible").hide();
             },
             minLength: 1,
             select: function (event, ui) {
