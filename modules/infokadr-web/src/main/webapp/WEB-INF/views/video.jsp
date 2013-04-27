@@ -54,7 +54,7 @@
                 <li class="nav-header">Предыдущие трейлеры:</li>
             </c:if>
             <c:forEach var="tr" items="${trailersBefore}">
-                <li><a href="${root}/video/${tr.id}" title="${tr.name}">${tr.film.rusName}</a></li>
+                <li><a href="${root}video/${tr.id}">${tr.film.rusName}</a></li>
             </c:forEach>
 
         </ul>
@@ -75,7 +75,7 @@
             </c:if>
 
             <c:forEach var="tr" items="${trailersAfter}">
-                <li><a href="${root}video/${tr.id}" title="${tr.name}">${tr.film.rusName}</a></li>
+                <li><a href="${root}video/${tr.id}">${tr.film.rusName}</a></li>
             </c:forEach>
         </ul>
     </div>

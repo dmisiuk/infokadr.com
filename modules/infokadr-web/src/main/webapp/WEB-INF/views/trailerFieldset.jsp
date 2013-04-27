@@ -40,7 +40,7 @@
         var filmUrlFrame = $("#film_url");
         var urlLabel = $("#url-label");
         var customUrl = customUrlInput.val();
-        var completeURL = prefix+ getYouTubeCode(customUrl);
+        var completeURL = prefix + getYouTubeCode(customUrl);
         filmUrlFrame.attr("src", completeURL);
         urlLabel.text(completeURL);
         urlInput.val(completeURL);
@@ -49,18 +49,18 @@
         saveButton.removeAttr("disabled");
     }
 
-    var getYouTubeCode = function(str) {
+    var getYouTubeCode = function (str) {
         //http://www.youtube.com/watch?v=_T0002AcY-k
         var regFromBrowser = /^((https|http)\:\/\/)?(www.)?youtube.com\/watch\?v=.*$/
         //http://youtu.be/_T0002AcY-k
         var regFromShare = /^http\:\/\/youtu.be\/.*$/
         //_T0002AcY-k
 
-        if(regFromBrowser.test(str)){
+        if (regFromBrowser.test(str)) {
             var startParameter = str.indexOf("?v=");
-            return str.slice(startParameter +3);
+            return str.slice(startParameter + 3);
         }
-        if(regFromShare.test(str)){
+        if (regFromShare.test(str)) {
             return str.slice(16);
         }
         return str;
@@ -72,6 +72,11 @@
 
 
 <label>Название трейлера:</label>
+
+<p class="text-info" style="width: 80%;">
+    Текст #eng_name и #rus_name будут заменен
+    на название фильма на английском и русском соответсвенно
+</p>
 <form:errors path="name" cssClass="help-block"/>
 <form:textarea path="name" rows="3" style="width: 80%" required="true"/>
 
@@ -105,7 +110,7 @@
 </div>
 
 
-<input type="text" id="customUrl" style="width: 60%" />
+<input type="text" id="customUrl" style="width: 60%"/>
 <button type="button" onclick="parseUrl();" class="btn"><i class="icon-check"></i> проверить</button>
 
 <label class="label-info" style="width: 80%;">
