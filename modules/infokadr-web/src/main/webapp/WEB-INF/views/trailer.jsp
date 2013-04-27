@@ -10,8 +10,8 @@
 
 <tiles:insertTemplate template="/WEB-INF/views/breadcrumb.jsp">
     <tiles:putAttribute name="lisBreadcrumb">
-        <li><a href="${root}/admin">Все фильмы</a> <span class="divider">/</span></li>
-        <li><a href="${root}/admin/film/${film.id}">${film.rusName}</a> <span class="divider">/</span></li>
+        <li><a href="${root}admin">Все фильмы</a> <span class="divider">/</span></li>
+        <li><a href="${root}admin/film/${film.id}">${film.rusName}</a> <span class="divider">/</span></li>
         <li class="active">${trailer.shortName}</li>
     </tiles:putAttribute>
 </tiles:insertTemplate>

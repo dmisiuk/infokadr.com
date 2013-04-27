@@ -105,7 +105,7 @@
 </div>
 
 
-<input type="text" id="customUrl" style="width: 60%" required="true"/>
+<input type="text" id="customUrl" style="width: 60%" />
 <button type="button" onclick="parseUrl();" class="btn"><i class="icon-check"></i> проверить</button>
 
 <label class="label-info" style="width: 80%;">

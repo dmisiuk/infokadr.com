@@ -5,11 +5,11 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page isELIgnored="false" %>
 
-<c:set var="root" value="${pageContext.servletContext.contextPath}" scope="request"/>
-<c:set var="img" value="${root}/static/images" scope="request"/>
-<c:set var="css" value="${root}/static/css" scope="request"/>
-<c:set var="js" value="${root}/static/js" scope="request"/>
-<c:set var="bs" value="${root}/static/bootstrap" scope="request"/>
+<c:set var="root" value="/" scope="request"/>
+<c:set var="img" value="${root}static/images" scope="request"/>
+<c:set var="css" value="${root}static/css" scope="request"/>
+<c:set var="js" value="${root}static/js" scope="request"/>
+<c:set var="bs" value="${root}static/bootstrap" scope="request"/>
 
 
 <html>
@@ -49,7 +49,7 @@
         $("#films").autocomplete({
             source: function (request, response) {
                 $.ajax({
-                    url: "${root}/film/searchForLastTrailer",
+                    url: "${root}film/searchForLastTrailer",
                     dataType: 'json',
                     data: {
                         term: request.term
@@ -61,7 +61,7 @@
             },
             minLength: 1,
             select: function (event, ui) {
-                window.location.href = "${root}/video/" + ui.item.id;
+                window.location.href = "${root}video/" + ui.item.id;
             }
         });
     });
@@ -77,7 +77,7 @@
                 <li><a href="${root}" style="font-weight: bold;">infokadr</a></li>
                 <sec:authorize access="hasRole('admin')">
                     <li>
-                        <a href="${root}/admin">панель администратора</a>
+                        <a href="${root}admin">панель администратора</a>
                     </li>
                 </sec:authorize>
             </ul>

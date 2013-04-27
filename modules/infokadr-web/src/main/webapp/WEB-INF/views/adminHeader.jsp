@@ -4,11 +4,11 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page isELIgnored="false" %>
 
-<c:set var="root" value="${pageContext.servletContext.contextPath}" scope="request"/>
-<c:set var="img" value="${root}/static/images" scope="request"/>
-<c:set var="css" value="${root}/static/css" scope="request"/>
-<c:set var="js" value="${root}/static/js" scope="request"/>
-<c:set var="bs" value="${root}/static/bootstrap" scope="request"/>
+<c:set var="root" value="/" scope="request"/>
+<c:set var="img" value="${root}static/images" scope="request"/>
+<c:set var="css" value="${root}static/css" scope="request"/>
+<c:set var="js" value="${root}static/js" scope="request"/>
+<c:set var="bs" value="${root}static/bootstrap" scope="request"/>
 
 
 <script>
@@ -21,7 +21,7 @@
         $("#films").autocomplete({
             source: function (request, response) {
                 $.ajax({
-                    url: "${root}/film/adminSearch",
+                    url: "${root}film/adminSearch",
                     dataType: 'json',
                     data: {
                         term: request.term
@@ -33,7 +33,7 @@
             },
             minLength: 1,
             select: function (event, ui) {
-                window.location.href = "${root}/admin/film/" + ui.item.id;
+                window.location.href = "${root}admin/film/" + ui.item.id;
             }
         });
     });
