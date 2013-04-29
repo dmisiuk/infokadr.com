@@ -12,7 +12,7 @@
     <div id="title" class="span6">
         ${trailer.name}
         <sec:authorize access="hasRole('admin')">
-            <a href="${root}/admin/film/${trailer.film.id}/video/${trailer.id}">[редактировать]</a>
+            <a href="${root}admin/film/${trailer.film.id}/video/${trailer.id}">[редактировать]</a>
         </sec:authorize>
     </div>
 
